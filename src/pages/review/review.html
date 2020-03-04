@@ -1,0 +1,64 @@
+<!--
+  Generated template for the ReviewPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<!-- <ion-header>
+
+  <ion-navbar>
+    <ion-title>Review</ion-title>
+  </ion-navbar>
+
+</ion-header> -->
+
+
+<ion-content style="background-color: #006098 !important;">
+  <ion-row style="height: 170px !important;">
+    <ion-col style="margin-left: 20px;margin-right: 20px">
+      <ion-icon *ngIf="translate.getDefaultLang()!='ar'" (click)="goBack()" name="arrow-back" style="color: white; margin-top: 20px;font-size: 30px"></ion-icon>
+      <ion-icon *ngIf="translate.getDefaultLang()=='ar'" (click)="goBack()" name="arrow-forward" style="color: white; margin-top: 20px;font-size: 30px"></ion-icon>
+      <!-- <label style="color: white; margin-top: 20px;font-size: 20px ;display: block"> {{'bus'|translate}} #
+              {{busNumber}}</label> -->
+    </ion-col>
+    <div [ngClass]="{'rateStyleAr':(translate.getDefaultLang()=='ar'),'rateStyleEn':(translate.getDefaultLang()!='ar')}">
+      <ion-col style="width: fit-content; margin: auto !important;display: block !important;padding: 0;top: 9px;">
+        <!-- <img src="assets/imgs/icStar.png" style="width: 20px;height: 20px;">
+        <img src="assets/imgs/icStar.png" style="width: 20px;height: 20px;">
+        <img src="assets/imgs/icStar.png" style="width: 20px;height: 20px;">
+        <img src="assets/imgs/icStar.png" style="width: 20px;height: 20px;">
+        <img src="assets/imgs/icStar.png" style="width: 20px;height: 20px;"> -->
+       <ion-icon  *ngFor="let item of ratingArray" (click)="rateBus(item)" 
+        name="star"
+        [ngStyle]="{'color': ratingStatus >= item? '#ff8300' : '#cce1d7'}"
+        style="font-size: 23px;margin-left:1px ;margin-right: 1px"></ion-icon>
+       <!--  -->
+        <!-- <ion-icon name="star" style="width: 23px;height: 23px;color: orange"></ion-icon>
+        <ion-icon name="star" style="width: 23px;height: 23px;color: orange"></ion-icon>
+        <ion-icon name="star" style="width: 23px;height: 23px;color: orange"></ion-icon>
+        <ion-icon name="star" style="width: 23px;height: 23px;color: orange"></ion-icon>
+        <ion-icon name="star" style="width: 23px;height: 23px;color: orange"></ion-icon> -->
+      </ion-col>
+    </div>
+    <img *ngIf="translate.getDefaultLang()=='ar'" src="assets/imgs/icBus@2x.png" Class="busStyleAr">
+    <img *ngIf="translate.getDefaultLang()!='ar'" src="assets/imgs/icBusBusDetails.png" Class="busStyleEn">
+  </ion-row>
+  <ion-row style="height: fit-content !important;">
+    <label style="color: white;margin: auto;display: block;font-size: 25px;">{{'WriteReview'|translate}}</label>
+  </ion-row>
+  <ion-col style="height: fit-content !important;width: fit-content;margin: auto;display: block;top: 15px;">
+    <label style="color: white;font-size: 15px;margin-left: 15px;margin-right: 15px;">{{'bus'|translate}} # {{bus_number}}</label>
+    <label style="color: white;font-size: 15px;margin-left: 15px;margin-right: 15px;text-transform: capitalize;">{{'driver'|translate}} : {{driverName}}</label>
+  </ion-col>
+  <ion-row style="margin-top: 50px">
+    <label style="color: white;font-size: 15px;margin-left: 60px;margin-right: 60px;">{{'Review'|translate}}</label>
+  </ion-row>
+  <ion-row style="margin-left: 60px !important;;margin-right: 60px !important;">
+    <ion-textarea type="text" [(ngModel)]="message" [ngClass]="{'text-area-input-ar':(translate.getDefaultLang()=='ar'),'text-area-input-en':(translate.getDefaultLang()!='ar')}"></ion-textarea>
+  </ion-row>
+  <div style="height: 1px;background-color: white;margin-left: 60px;margin-right: 60px;">
+  </div>
+  <div style="position:relative;width: 100%;padding-bottom: 0 !important;">
+    <button ion-button (click)="submitReview()" style="margin:auto;background-color:#ff8300;display: block;text-transform: none;font-size: 14px;width: 60% !important;margin-left: 20% !important;margin-right: 20% !important;padding: 20px;margin-top: 20px;">{{'Submit'|translate}}</button>
+  </div>
+</ion-content>

@@ -1,0 +1,65 @@
+<!--
+  Generated template for the SavedLocationPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header class="{{this.helper.lang_direction}}">
+  <ion-navbar color="autobus">
+    <ion-title>
+      {{ 'SavedLocations' | translate }}
+    </ion-title>
+    <ion-buttons  right>
+        <button ion-button style="width: 30px">
+          </button>
+  </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <!-- home address row -->
+    <ion-row style="text-align:center;" *ngIf="noSavedData">
+        <ion-col col-12>
+          {{'noSavedData' | translate}}
+        </ion-col>
+      </ion-row>
+  <ion-list>
+    <ion-row  *ngFor="let item of savedLocations;" >
+      <ion-col (click)="openSerchFromSaved(item)" col-2 style="height: fit-content!important; margin: auto!important;">
+        <img src="assets/imgs/icBusBig.png" style="margin: auto;display: block;width: 25px;height: 15px;">
+      </ion-col>
+      <ion-col col-10>
+        <!-- <ion-row style="margin-bottom: 12px">
+          <ion-col style="padding:0;">
+            <label style="color: #006098;font-size: 16px;font-size: 15px">{{'Bus'|translate}} {{item.id}} </label>
+          </ion-col>
+        </ion-row> -->
+        <ion-row>
+          <ion-col (click)="openSerchFromSaved(item)" style="padding:0;">
+            <label style="color: #a7a9ac;font-size: 16px;font-size: 13px;">{{'Source'|translate}}</label>
+          </ion-col>
+          <ion-col (click)="openSerchFromSaved(item)" style="padding:0;">
+            <label style="color: #a7a9ac;font-size: 16px;font-size: 13px;">{{'Destination'|translate}}</label>
+          </ion-col>
+          <ion-col  col-2></ion-col>
+        </ion-row>
+        <ion-row style="margin-bottom: 5px;margin-top: 2px;">
+          <ion-col col-5 (click)="openSerchFromSaved(item)" style="padding:0;">
+            <label style="color: black;font-size: 16px;">{{item.from_location_address}}</label>
+            
+          </ion-col>
+          <ion-col col-5 (click)="openSerchFromSaved(item)" style="padding:0;">
+            <label style="color: black;font-size: 16px;">{{item.to_location_address}}</label>
+          </ion-col>
+          <ion-col  col-2 (click)="deleteRoute(item.id)" style="padding:0;width: fit-content;">
+              <ion-icon name="trash" style="font-size: 25px;color:red" ></ion-icon>
+            </ion-col>
+        </ion-row>
+      </ion-col>
+      <div style="background-color:#e8e8e8 ;width: 100%;height: 2px;margin-right: 20px;margin-left: 20px"></div>
+    </ion-row>
+    <div>
+      <button ion-button (click)="getSavedLocations()" [hidden]="hideMoreBtn" style="margin:auto;background-color:#ff8300;width: 83%;display: block;margin-top:20px;text-transform: none;font-size: 14px;">{{'loadMore'|translate}}</button>
+    </div>
+  </ion-list>
+</ion-content>

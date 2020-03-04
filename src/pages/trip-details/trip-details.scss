@@ -1,0 +1,61 @@
+page-trip-details {
+	.ion-tabs-fix {
+		ion-tabs {
+		 height: calc(100% + 56px) !important;
+	   }
+   }
+   #map_canvas{
+	height: calc(100% - 185px);
+	width: 100%;
+	position: absolute !important;
+
+}
+   #map_t{
+	height: calc(100% - 190px);
+	width: 100%;
+	position: absolute !important;
+
+}
+#map-wrapper {
+    width: 100%;
+    height: 100%;
+    position: relative;
+   
+    }
+    .busStyleEn{
+        width: 150px;
+        height: 150px;
+        float:right;
+    }
+    .busStyleAr{
+        width: 150px;
+        height: 150px;
+        float:left;
+	}
+	.row{
+		padding: 0 5px !important;
+	}
+
+.price{
+	position: relative;
+}
+.price::before{
+	position: absolute;
+	font-family: "na5il2" !important; content: '\62';
+	font-size: 6em;
+	top: -45px;
+}
+      .scroll-content2{
+		left: 0;
+		right: 0;
+		top: 240px;
+		bottom: 0;
+		position: absolute;
+		z-index: 1;
+		display: block;
+		overflow-x: hidden;
+		overflow-y: scroll;
+		will-change: scroll-position;
+		contain: size style layout;
+	}
+}

@@ -1,0 +1,7 @@
+<ion-tabs>
+  <ion-tab [root]="tab1Root" tabTitle="{{this.translate.instant('hometab')}}" tabIcon="hometab"></ion-tab>
+  <ion-tab [root]="tab2Root" tabTitle="{{this.translate.instant('triptab')}}" tabIcon="triptab"></ion-tab>
+  <!-- <ion-tab [root]="tab3Root" *ngIf="this.helper.transType == 4" tabTitle="{{this.translate.instant('University')}}" tabIcon="univtab"></ion-tab> -->
+  <ion-tab *ngIf="!this.helper.skipLogin" [root]="tab5root" tabTitle="{{this.translate.instant('paytab')}}" tabIcon="card"></ion-tab>
+  <ion-tab [root]="tab4Root" *ngIf="this.helper.transType == 4 || this.helper.transType == 3 || this.helper.transType == 5" tabTitle="{{this.translate.instant('accounttab')}}" tabIcon="accounttab"></ion-tab>
+</ion-tabs>

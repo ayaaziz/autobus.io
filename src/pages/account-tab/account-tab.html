@@ -1,0 +1,117 @@
+  <ion-header>
+    <ion-navbar  color="autobus">
+        <ion-buttons  left>
+            <button ion-button style="width: 30px">
+              </button>
+      </ion-buttons>
+      <ion-title>{{"Account" | translate}}</ion-title>
+      <ion-buttons  right>
+          <button ion-button (click)="openContact()">
+              <ion-icon name="ios-call-outline" style="color:white;font-size:24px;font-weight: bold;" ></ion-icon>
+            </button>
+    </ion-buttons>
+    </ion-navbar>
+  </ion-header>
+
+<ion-content>
+  <ion-list *ngIf="!this.helper.skipLogin">
+    <!-- Profile Section -->
+    <ion-list-header class="ion-list-header" color="titlesAccountColor">
+      {{ 'PROFILE' | translate }}
+      <ion-icon name="create" (click)="updateUserData()"[ngClass]="{'editIconAR':(translate.getDefaultLang()=='ar'),'editIconEN':(translate.getDefaultLang()!='ar')}"></ion-icon>
+    </ion-list-header>
+    <ion-item no-lines>
+      <ion-label class="ion-label-profile"> {{ 'Name' | translate }}</ion-label>
+      <ion-label style="color:#8a8a8a;font-size: 20px">{{userName}}</ion-label>
+      <!-- "{{ 'UserName' |  translate }}"   -->
+    </ion-item>
+    <div [ngClass]="{'lineStyle-ar':(translate.getDefaultLang()=='ar'),'lineStyle-en':(translate.getDefaultLang()!='ar')}"></div>
+    <ion-item no-lines>
+      <ion-label class="ion-label-profile">{{ 'Email' | translate }}</ion-label>
+      <ion-label style="color:#8a8a8a;font-size: 20px">{{userEmail}}</ion-label>
+      <!-- {{ 'Email' |  translate }} -->
+    </ion-item>
+    <div [ngClass]="{'lineStyle-ar':(translate.getDefaultLang()=='ar'),'lineStyle-en':(translate.getDefaultLang()!='ar')}"></div>
+    <ion-item no-lines>
+      <ion-label class="ion-label-profile">{{ 'MobileNumber' | translate }}</ion-label>
+      <ion-label style="color:#8a8a8a;font-size: 20px">{{userPhoneNumber}}</ion-label>
+    </ion-item>
+    <div [ngClass]="{'lineStyle-ar':(translate.getDefaultLang()=='ar'),'lineStyle-en':(translate.getDefaultLang()!='ar')}"></div>
+    <!-- Account Section -->
+    <ion-list-header class="ion-list-header" color="titlesAccountColor">
+      {{ 'ACCOUNT' | translate }}
+    </ion-list-header>
+    <ion-item no-lines (click)="goToSavedLocationsPage()">
+      <ion-label class="ion-label-account">{{ 'SavedLocations' | translate }}</ion-label>
+      <ion-icon name="ios-arrow-back-outline" item-end *ngIf="translate.getDefaultLang()=='ar'"></ion-icon>
+      <ion-icon name="ios-arrow-forward-outline" item-end *ngIf="translate.getDefaultLang()!='ar'"></ion-icon>
+    </ion-item>
+    <div [ngClass]="{'lineStyle-ar':(translate.getDefaultLang()=='ar'),'lineStyle-en':(translate.getDefaultLang()!='ar')}"></div>
+    <ion-item no-lines (click)="changePassword()">
+      <ion-label class="ion-label-account">{{ 'ChangePassword' | translate }}</ion-label>
+      <ion-icon name="ios-arrow-back-outline" item-end *ngIf="translate.getDefaultLang()=='ar'"></ion-icon>
+      <ion-icon name="ios-arrow-forward-outline" item-end *ngIf="translate.getDefaultLang()!='ar'"></ion-icon>
+    </ion-item>
+    <div [ngClass]="{'lineStyle-ar':(translate.getDefaultLang()=='ar'),'lineStyle-en':(translate.getDefaultLang()!='ar')}"></div>
+    <!-- Settings section -->
+    <ion-list-header class="ion-list-header" color="titlesAccountColor">
+      {{ 'SETTINGS' | translate }}
+    </ion-list-header>
+    <ion-item no-lines (click)="changeLanguage()">
+      <ion-label class="ion-label-profile"> {{ 'Language' | translate }}</ion-label>
+      <ion-label style="color: black; font-size:20px;">{{ 'LanguageVal' | translate }}</ion-label>
+    </ion-item>
+    <div [ngClass]="{'lineStyle-ar':(translate.getDefaultLang()=='ar'),'lineStyle-en':(translate.getDefaultLang()!='ar')}"></div>
+
+    <!-- <ion-item no-lines (click)="goToNotifications()">
+      <ion-label class="ion-label-account">{{ 'Notifications' | translate }}</ion-label>
+      <ion-icon name="ios-arrow-back-outline" item-end *ngIf="translate.getDefaultLang()=='ar'"></ion-icon>
+      <ion-icon name="ios-arrow-forward-outline" item-end *ngIf="translate.getDefaultLang()!='ar'"></ion-icon>
+    </ion-item>
+    <div [ngClass]="{'lineStyle-ar':(translate.getDefaultLang()=='ar'),'lineStyle-en':(translate.getDefaultLang()!='ar')}"></div> -->
+
+    <!-- More-->
+    <ion-list-header class="ion-list-header" color="titlesAccountColor">
+      {{ 'MORE' | translate }}
+    </ion-list-header>
+    <ion-item no-lines (click)="goToContactUs()">
+      <ion-label class="ion-label-account">{{ 'ContactUs' | translate }}</ion-label>
+      <ion-icon name="ios-arrow-back-outline" item-end *ngIf="translate.getDefaultLang()=='ar'"></ion-icon>
+      <ion-icon name="ios-arrow-forward-outline" item-end *ngIf="translate.getDefaultLang()!='ar'"></ion-icon>
+    </ion-item>
+    <div [ngClass]="{'lineStyle-ar':(translate.getDefaultLang()=='ar'),'lineStyle-en':(translate.getDefaultLang()!='ar')}"></div>
+
+    <ion-item no-lines (click)="goToTermsAndConditions()">
+      <ion-label class="ion-label-account">{{ 'TermsAndConditions' | translate }}</ion-label>
+      <ion-icon name="ios-arrow-back-outline" item-end *ngIf="translate.getDefaultLang()=='ar'"></ion-icon>
+      <ion-icon name="ios-arrow-forward-outline" item-end *ngIf="translate.getDefaultLang()!='ar'"></ion-icon>
+    </ion-item>
+    <div [ngClass]="{'lineStyle-ar':(translate.getDefaultLang()=='ar'),'lineStyle-en':(translate.getDefaultLang()!='ar')}"></div>
+    <ion-item (click)="logout()" style="color: red;font-size:20px ">
+      {{ 'Logout' | translate }}
+    </ion-item>
+
+  </ion-list>
+  <ion-list *ngIf="this.helper.skipLogin">
+  <ion-item no-lines (click)="changeLanguage()" >
+      <ion-label class="ion-label-profile"> {{ 'Language' | translate }}</ion-label>
+      <ion-label style="color: black; font-size:20px;">{{ 'LanguageVal' | translate }}</ion-label>
+    </ion-item>
+    <div [ngClass]="{'lineStyle-ar':(translate.getDefaultLang()=='ar'),'lineStyle-en':(translate.getDefaultLang()!='ar')}"></div>
+  <ion-item no-lines (click)="goToTermsAndConditions()">
+      <ion-label class="ion-label-account">{{ 'TermsAndConditions' | translate }}</ion-label>
+      <ion-icon name="ios-arrow-back-outline" item-end *ngIf="translate.getDefaultLang()=='ar'"></ion-icon>
+      <ion-icon name="ios-arrow-forward-outline" item-end *ngIf="translate.getDefaultLang()!='ar'"></ion-icon>
+    </ion-item>
+    <div [ngClass]="{'lineStyle-ar':(translate.getDefaultLang()=='ar'),'lineStyle-en':(translate.getDefaultLang()!='ar')}"></div>
+    <ion-item no-lines (click)="goToContactUs()">
+        <ion-label class="ion-label-account">{{ 'ContactUs' | translate }}</ion-label>
+        <ion-icon name="ios-arrow-back-outline" item-end *ngIf="translate.getDefaultLang()=='ar'"></ion-icon>
+        <ion-icon name="ios-arrow-forward-outline" item-end *ngIf="translate.getDefaultLang()!='ar'"></ion-icon>
+      </ion-item>
+      <div [ngClass]="{'lineStyle-ar':(translate.getDefaultLang()=='ar'),'lineStyle-en':(translate.getDefaultLang()!='ar')}"></div>
+    <ion-item (click)="logout()" style="color: #006098;font-size:20px;font-weight: bold; ">
+      {{ 'Login' | translate }}
+    </ion-item>
+  </ion-list>
+</ion-content>

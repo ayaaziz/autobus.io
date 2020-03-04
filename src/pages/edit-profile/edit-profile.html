@@ -1,0 +1,39 @@
+<!--
+  Generated template for the EditProfilePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+ <ion-header class="{{this.helper.lang_direction}}">
+    <ion-navbar color="autobus">
+      <ion-title>
+        {{ 'EditProfile' | translate }}
+      </ion-title>
+      <ion-buttons  right>
+          <button ion-button style="width: 30px">
+            </button>
+    </ion-buttons>
+    </ion-navbar>
+  </ion-header>
+<ion-content padding >
+    <ion-list>
+    <ion-item no-lines>
+        <ion-label class="ion-label-profile"> {{ 'Name' | translate }}</ion-label>
+        <ion-input type="text"  [(ngModel)]="newUserName"   [ngClass]="{'text-input-ar':(translate.getDefaultLang()=='ar'),'text-input-en':(translate.getDefaultLang()!='ar')}"></ion-input>
+        <!-- "{{ 'UserName' |  translate }}"   -->
+      </ion-item>
+      <div [ngClass]="{'lineStyle-ar':(translate.getDefaultLang()=='ar'),'lineStyle-en':(translate.getDefaultLang()!='ar')}"></div>
+      <ion-item no-lines>
+        <ion-label class="ion-label-profile">{{ 'Email' | translate }}</ion-label>
+        <ion-input type="text" [(ngModel)]="newUserEmail"  [ngClass]="{'text-input-ar':(translate.getDefaultLang()=='ar'),'text-input-en':(translate.getDefaultLang()!='ar')}"></ion-input>
+        <!-- {{ 'Email' |  translate }} -->
+      </ion-item>
+      <div [ngClass]="{'lineStyle-ar':(translate.getDefaultLang()=='ar'),'lineStyle-en':(translate.getDefaultLang()!='ar')}"></div>
+      <ion-item no-lines>
+        <ion-label class="ion-label-profile">{{ 'MobileNumber' | translate }}</ion-label>
+        <ion-input type="number"  [(ngModel)]="newUserPhoneNumber"   [ngClass]="{'text-input-ar':(translate.getDefaultLang()=='ar'),'text-input-en':(translate.getDefaultLang()!='ar')}" ></ion-input>
+      </ion-item>
+      <div [ngClass]="{'lineStyle-ar':(translate.getDefaultLang()=='ar'),'lineStyle-en':(translate.getDefaultLang()!='ar')}"></div>
+      <button ion-button (click)="updateProfile()"  style="margin:auto;background-color:#ff8300;width: 50%;display: block;margin-top:20px;text-transform: none;">{{'Upate'|translate}}</button>   
+    </ion-list>
+</ion-content>

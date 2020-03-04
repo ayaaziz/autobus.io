@@ -1,0 +1,38 @@
+page-review-sent {
+    .rateStyleEn{
+        width: 63px;
+       height: 40px;
+       background-color: white;
+       right: 177px;
+       top: 190px;
+       border: 1px;
+       border-radius: 10px;
+       position: absolute;
+    
+    }
+    .rateStyleAr{
+        width: 63px;
+        height: 40px;
+        background-color: white;
+        left: 176px;
+        top: 190px;
+        border: 1px;
+        border-radius: 10px;
+        position: absolute;
+    }
+    .busStyleEn{
+        width: 200px;
+        height: 170px;
+        float:right;
+        position: absolute;
+        right: 0;  
+    }
+    .busStyleAr{
+        width: 200px;
+        height: 170px;
+        float:left;
+        position: absolute;
+        left:0; 
+    }
+
+}

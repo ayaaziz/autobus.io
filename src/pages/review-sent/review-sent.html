@@ -1,0 +1,40 @@
+<!--
+  Generated template for the ReviewSentPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<!-- <ion-header>
+
+  <ion-navbar>
+    <ion-title>ReviewSent</ion-title>
+  </ion-navbar>
+
+</ion-header> -->
+
+
+<ion-content style="background-color: #006098 !important;">
+  <ion-row style="padding: 5px !important;height:170px;margin-top: 120px;" >
+    <div [ngClass]="{'rateStyleAr':(translate.getDefaultLang()=='ar'),'rateStyleEn':(translate.getDefaultLang()!='ar')}">
+      <img src="assets/imgs/icSuccess.png" style="width: 20px; height: 20px; display: block; margin: auto; margin-top: 9px;">
+    </div>
+    <img  *ngIf="translate.getDefaultLang()!='ar'" src="assets/imgs/bus587.png" Class="busStyleEn">
+    <img *ngIf="translate.getDefaultLang()=='ar'" src="assets/imgs/icBus@2x.png" Class="busStyleAr">
+  </ion-row>
+  <ion-col style="height: fit-content !important;top:20px">
+      <label style="color: white;margin: auto;display: block;font-size: 25px;text-align: center">{{'submitSuccess'|translate}}</label>
+      <label style="color: white;margin: auto;display: block;font-size: 25px;text-align: center">{{'successfully'|translate}}</label>
+  </ion-col>
+  <ion-col style="height: fit-content !important;top:20px">
+    <label style="color: white;margin: auto;display: block;font-size: 15px;text-align: center;">{{'reviewThanks1'|translate}}</label>
+    <label style="color: white;margin: auto;display: block;font-size: 15px;text-align: center;">{{'reviewThanks2'|translate}}</label>
+    <label style="color: white;margin: auto;display: block;font-size: 15px;text-align: center;">{{'reviewThanks3'|translate}}</label>
+    
+  </ion-col>
+  <div style="width: 100%;margin-top:30px">
+    <button ion-button (click)="backToTrips()" style="margin:auto;background-color:#ff8300;display: block;text-transform: none;font-size: 14px;width: 60% !important;margin-left: 20% !important;margin-right: 20% !important;padding: 20px">{{'Back_trip'|translate}}</button>
+ 
+  </div>
+
+
+</ion-content>

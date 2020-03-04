@@ -1,0 +1,59 @@
+<!--
+  Generated template for the PaymentPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{"Payment" | translate}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list *ngIf="!this.helper.skipLogin">
+    <!-- Profile Section -->
+    <ion-list-header class="ion-list-header" color="titlesAccountColor">
+      <ion-icon name="card"></ion-icon>
+      {{"Wallet" | translate}}
+    </ion-list-header>
+    <ion-item >
+      <ion-label class="ion-label-profile">{{ "Your Balance" | translate}} </ion-label>
+      <ion-label style="color:#8a8a8a;font-size: 20px">{{balance}} {{"JD" | translate}}</ion-label>
+    </ion-item>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+      <!-- <input type="number" placeholder="{{'rechargeAmount' | translate}}" [(ngModel)]="chargeAmount" maxlength="4"> -->
+        <ion-card (click)="Recharge()" class="recharge">
+          <ion-icon name="logo-usd"></ion-icon>
+          {{'recharge' | translate}}
+        </ion-card>
+        </ion-col>
+        <ion-col>
+          <ion-card (click)="Recharge()" class="recharge">
+            <ion-icon name="share-alt"></ion-icon>
+              {{'transfer' | translate}}
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+  </ion-list>
+    <div *ngIf="paid" class="approved">
+      <h1>{{"paid" | translate}}</h1>
+    </div>
+    <!-- <button ion-button (click)="payWithStripe()">Pay with Stripe</button> -->
+    <div class="qrbutton" *ngIf="this.helper.lang_direction == 'ltr'">
+      <img src="assets/imgs/QRbutton.png" alt="" (click)="scancode()">
+    </div>
+    <div class="qrbutton" *ngIf="this.helper.lang_direction == 'rtl'">
+      <img src="assets/imgs/QRbutton-ar.png" alt="" (click)="scancode()">
+    </div>
+<div *ngIf="scannedcode">
+  <div>{{ "Bus" | translate}} : {{ scannedcode[0] }}</div>
+  <div class="cost">{{"busfare" | translate}} : {{ scannedcode[1] }} JD</div>
+<button ion-button full icon-left (click)="pay()" *ngIf="!paid">Pay one time</button>
+</div>
+
+</ion-content>

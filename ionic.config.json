@@ -1,0 +1,14 @@
+{
+  "name": "autobusApp",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular",
+  "proxies": [
+    {
+      "path": "/payWithStripe",
+      "proxyUrl": "https://us-central1-autobus-43798.cloudfunctions.net/"
+    }
+  ],
+  "app_id": ""
+}

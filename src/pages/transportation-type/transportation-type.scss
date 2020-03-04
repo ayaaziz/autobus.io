@@ -1,0 +1,44 @@
+page-transportation-type {
+.rtl .university-trans{
+float: left;
+width: 100%;
+text-align: center;
+color: white;
+font-size: 14pt;
+}
+.ltr .university-trans{
+float: right;
+width: 100%;
+text-align: center;
+color: white;
+font-size: 14pt;
+}
+// .rtl .public-trans{
+//     float: right;
+//     width: 100%;
+// text-align: center;
+// color: white;
+// font-size: 14pt;
+
+//     }
+    .public-trans{
+    float: left;
+    width: 100%;
+text-align: center;
+color: white;
+font-size: 14pt;
+    }
+    
+    // .rtl .univer-busg{
+    //     float: left;
+    //     }
+         .univer-bus{
+        float: right;
+        }
+        // .rtl .public-bus{
+        //     float: right;
+        //     }
+             .public-bus{
+            float: left;
+            }
+}

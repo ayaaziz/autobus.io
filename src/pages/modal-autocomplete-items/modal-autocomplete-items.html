@@ -1,0 +1,25 @@
+<ion-header  class="{{this.helper.lang_direction}}">
+  <ion-navbar color="autobus">
+    <ion-title>{{"YourLocation" | translate}}</ion-title>
+    <ion-buttons  style="display: inherit;" right>
+        <button ion-button icon-only padding (click)="dismiss()"><ion-icon name="close" (click)="dismiss()" style="color:white"></ion-icon></button>
+            
+        </ion-buttons>
+  </ion-navbar>
+  
+</ion-header>
+<ion-content style="background: white;" class="{{this.helper.lang_direction}}"> 
+    <ion-searchbar  #searchbar
+        [(ngModel)]="autocomplete.query" 
+        [showCancelButton]="true" 
+        (ionInput)="updateSearch()" 
+        (ionCancel)="dismiss()"
+        placeholder="{{this.translate.instant('autoComplete')}}">
+    </ion-searchbar>
+    <ion-list>
+        <ion-item *ngFor="let item of autocompleteItems" 
+            (click)="chooseItem(item)">
+            {{ item.description }}
+        </ion-item>
+    </ion-list>
+</ion-content>

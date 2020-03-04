@@ -1,0 +1,16 @@
+page-saved-location {
+    .scroll-content2{
+		left: 0;
+		right: 0;
+		top: 240px;
+		bottom: 0;
+		position: absolute;
+		z-index: 1;
+		display: block;
+		overflow-x: hidden;
+		overflow-y: scroll;
+		will-change: scroll-position;
+		contain: size style layout;
+	}
+
+}

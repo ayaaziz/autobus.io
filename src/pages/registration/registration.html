@@ -1,0 +1,74 @@
+<!--
+  Generated template for the RegistrationPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header class="{{this.helper.lang_direction}}">
+
+  <ion-navbar color="autobus">
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding  style="background-color:#006098" class="{{this.helper.lang_direction}}">
+<div style="color: white;font-size: 30px;text-align: center">{{"Registration" | translate}}</div>
+<form [formGroup]="registerFormOne" (ngSubmit)="register()" style="overflow-y: scroll;" [ngStyle]="{'overflow': refreshScroll ? 'scroll' : 'hidden'}">
+    <ion-item   [class.invalid]="!registerFormOne.controls.fullname.valid && submitAttempt">
+        <ion-label style="color:white" floating>{{"fullname" | translate}}</ion-label>
+        <ion-input formControlName="fullname" type="text"></ion-input>
+    </ion-item>
+    <div class="error-msg" *ngIf="!registerFormOne.controls.fullname.valid && submitAttempt">{{"enterFullname" | translate}}</div>
+
+    <ion-item   [class.invalid]="!registerFormOne.controls.mobile.valid && submitAttempt">
+        <ion-label style="color:white" floating>{{"MobileNumber" | translate}}</ion-label>
+        <ion-input formControlName="mobile" type="tel"></ion-input>
+    </ion-item>
+    <div class="error-msg" *ngIf="!registerFormOne.controls.mobile.valid && submitAttempt">{{"enterMobile" | translate}}</div>
+
+    <ion-item   [class.invalid]="!registerFormOne.controls.email.valid && submitAttempt">
+        <ion-label style="color:white" floating>{{"EmailAddress" | translate}}</ion-label>
+        <ion-input formControlName="email" type="text"></ion-input>
+    </ion-item>
+    <div class="error-msg" *ngIf="!registerFormOne.controls.email.valid && submitAttempt">{{"enterEmail" | translate}}</div>
+
+    <ion-item   [class.invalid]="!registerFormOne.controls.password.valid && submitAttempt">
+        <ion-label style="color:white" floating>{{"Password" | translate}}</ion-label>
+        <ion-input formControlName="password" type="password"></ion-input>
+    </ion-item>
+    <div class="error-msg" *ngIf="!registerFormOne.controls.password.valid && submitAttempt">{{"enterPassword" | translate}}</div>
+
+    <ion-item   [class.invalid]="!registerFormOne.controls.confirmpassword.valid && submitAttempt">
+        <ion-label style="color:white" floating>{{"confirmPassword" | translate}}</ion-label>
+        <ion-input formControlName="confirmpassword" type="password"></ion-input>
+    </ion-item>
+    <div class="error-msg" *ngIf="!registerFormOne.controls.confirmpassword.valid && submitAttempt">{{"passwordNotConfirmed" | translate}}</div>
+
+    <ion-item   [class.invalid]="!registerFormOne.controls.country.valid && submitAttempt">
+        <ion-label  style="color:white" floating>{{"country" | translate}}</ion-label>
+          <ion-select [class.invalid]="!registerFormOne.controls.country.valid && submitAttempt"
+            formControlName="country" interface="popover" [(ngModel)]="country" (ngModelChange)="countryChanged()" >
+            <!-- <ion-option value="1">{{"jordan" | translate}}</ion-option> -->
+
+            <ion-option value="{{item.id}}" *ngFor="let item of governorates">{{item.country_name}}</ion-option>
+          </ion-select>
+        </ion-item>
+        <div class="error-msg" *ngIf="!registerFormOne.controls.country.valid && submitAttempt">{{"selectCountry" | translate}}</div>
+
+    <ion-item>
+    <ion-label  style="color:white" floating>{{"Gender" | translate}}</ion-label>
+    <ion-select [class.invalid]="!registerFormOne.controls.gender.valid && submitAttempt" formControlName="gender" interface="popover"
+        [(ngModel)]="gender">
+        <ion-option></ion-option>
+        <ion-option value="1" selected>{{"male" | translate}}</ion-option>
+        <ion-option value="2">{{"female" | translate}}</ion-option>
+    </ion-select>
+    </ion-item>
+    <div class="error-msg" *ngIf="!registerFormOne.controls.gender.valid && submitAttempt">{{"enterGender" | translate}}</div>
+
+    <ion-item no-lines style="margin-top: 30px;">
+        <button ion-button style="  height: 48px;  background-color: #ff8500;color:white;width:99%;font-weight: bold;" type="submit">{{"register" | translate}}</button>
+      </ion-item>
+</form>
+</ion-content>

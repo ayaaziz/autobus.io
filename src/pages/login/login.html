@@ -1,0 +1,33 @@
+
+
+
+<ion-content padding style="background-color:#006098" class="{{this.helper.lang_direction}}">
+     <ion-icon name="globe" style="font-size: 30px;color: white;" (click)="this.helper.changelang()"></ion-icon>
+<p style="text-align: center;"><img src="assets/imgs/login.png"></p>
+<ion-item no-lines>
+<h5 style="font-weight: bold;color:white;font-size:2.2rem; margin: 0;text-transform: uppercase;">{{"Login" | translate}}</h5>
+</ion-item>
+<form [formGroup]="registerFormOne" (ngSubmit)="login()">
+<ion-item no-lines>
+  <ion-label style="color:white" floating>{{"EmailAddress" | translate}}</ion-label>
+  <ion-input type="text" formControlName="email" [(ngModel)]="email" style="border-bottom: 1px solid white;">
+  </ion-input>
+
+</ion-item>
+<div class="error-msg" *ngIf="!registerFormOne.controls.email.valid && submitAttempt">{{"enterEmail" | translate}}</div>
+<ion-item no-lines>
+  <ion-label style="color:white;" floating>{{"Password" | translate}}</ion-label>
+  <ion-input type="password" formControlName="password" [(ngModel)]="password" style="border-bottom: 1px solid white;">  </ion-input>
+
+</ion-item>
+<div class="error-msg" *ngIf="!registerFormOne.controls.password.valid && submitAttempt">{{"enterPassword" | translate}}</div>
+<ion-item no-lines style="margin-top: 30px;">
+  <button ion-button type="submit" style="  height: 48px;  background-color: #ff8500;color:white;width:99%;font-weight: bold;">{{"Login" | translate}}</button>
+</ion-item>
+</form>
+<ion-item no-lines style=" margin-top: 0px;">
+  <button ion-button style="border: 1px solid white; margin-top: 0px;height: 48px;background-color: transparent;color:white;width:99%;font-weight: bold;text-transform: uppercase" (click)="register()">{{"register" | translate}}</button>
+</ion-item>
+<p style="text-align: center;color:white;font-size: 1em;text-transform: uppercase;" (click)="forgotPassword()">{{"Forgot password?" | translate}}</p>
+<p style="text-align: center;color:white;font-size: 1.4em;text-transform: uppercase;font-weight: bold;" (click)="skipToApp()">{{"SKIPTOAPP" | translate}}</p>
+</ion-content>

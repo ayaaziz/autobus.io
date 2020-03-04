@@ -1,0 +1,17 @@
+page-registration {
+    .item{
+        background-color: transparent !important;
+    }
+    .text-input{
+        color: white !important;
+    }
+    .select-icon-inner{
+        color: white !important;
+    }
+    .select{
+        color: white !important;
+    }
+    .header::after{
+        background-image: none !important;
+    }
+}

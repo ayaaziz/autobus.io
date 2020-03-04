@@ -1,0 +1,76 @@
+<ion-header>
+  <ion-navbar  color="autobus">
+      <ion-buttons  left>
+        <button ion-button (click)="reloadApp()">
+          <ion-icon name="refresh" style="color:white;font-size:24px;font-weight: bold;" ></ion-icon>
+        </button>
+    </ion-buttons>
+    <ion-title>{{"hometab" | translate}}</ion-title>
+    <ion-buttons  right>
+        <button ion-button (click)="openContact()">
+            <ion-icon name="ios-call-outline" style="color:white;font-size:24px;font-weight: bold;" ></ion-icon>
+          </button>
+  </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content >
+    <!-- <ion-spinner name="circles" style="display:block;margin:auto;" [hidden]="showLoading" ></ion-spinner> -->
+  <div id="map_canvas" #map_canvas style="width:100%;height:100%;position: absolute;direction: ltr !important;">
+    <!-- <span class="small pick-place"><button ion-button (click)="onButton_click($event)" color="dark">
+      <ion-icon name="pin"></ion-icon>SHOW BUSES NEARBY</button>
+    </span> -->
+    <div style="display:none;width: 60px;height: 60px;position: fixed;bottom:50%;margin: auto !important;left:45%;right:45%" id="smallmarker" >
+      <img src="assets/imgs/markersmall.svg" id="centerMarkerImg" style="margin: auto !important;" width="60">
+    </div>
+    <div style="display:block;width: 60px;height: 60px;position: fixed;bottom:50%;margin: auto !important;left:45%;right:45%" id="bigmarker" >
+      <span [hidden]="!nearestBusID" class="nearbusTime"> {{nearestBusTime}}</span>
+      <img src="assets/imgs/marker.svg" id="centerMarkerImg" style="margin: auto !important;" width="60">
+    </div>
+
+    <!-- <img src="assets/imgs/marker.png" id="centerMarkerImg" style="position: fixed;top:50%;margin: auto !important;left:45%;"> -->
+    <div style="margin: 60px 10px;background-color:transparent;width:50px;left:0;border-radius: 10px;float: left;">
+    <img *ngIf="map_type == 'MAP_TYPE_NORMAL'" src="assets/imgs/sat.png" (click)="mapTypeChanged('MAP_TYPE_SATELLITE')" style="width:50px;height:50px;border-radius: 10px"/>
+    <img *ngIf="map_type == 'MAP_TYPE_SATELLITE'" src="assets/imgs/map.png" (click)="mapTypeChanged('MAP_TYPE_NORMAL')" style="width:50px;height:50px;border-radius: 10px"/>
+    </div>
+    <!-- <ion-select interface="popover" [(ngModel)]="map_type" (ionChange)="mapTypeChanged()" style="padding: 4px;margin: 6px 65px;background-color:white;width:100px;text-align: center;">
+      <ion-option value="MAP_TYPE_NORMAL">{{"Map" | translate}}</ion-option>
+      <ion-option value="MAP_TYPE_SATELLITE">{{"SATELLITE" | translate}}</ion-option>
+    </ion-select> -->
+    <div id="nearestBusBox" [hidden]="!nearestBusID" (click)="moveToBus()" style="position: fixed;background-color: white;bottom: 65px;width: 62%;margin: auto !important;right: 19%;border-radius: 6px;border:1px solid #cccccc ; z-index: 1;">
+      <ion-row>
+        <ion-col col-12>
+          <table>
+            <tr>
+              <td style="color:#006098;width: 75px;">{{"Nearestbus" | translate}}:</td>
+              <td style="color:#ff8300;font-size: 16px;"><img src="assets/imgs/icBus@3x.png" style="width: 18px;"> #{{nearestBusID}}</td>
+            </tr>
+            <tr>
+              <td *ngIf="moved == false" colspan="2" style="color:#2d3a46">{{"durationToBusFeet" | translate}} {{nearestBusTime}} {{"walk" | translate}}</td>
+              <td *ngIf="moved == true" colspan="2" style="color:#2d3a46">{{"durationToBusFeetSelected" | translate}} {{nearestBusTime}} {{"walk" | translate}}</td>
+            </tr>
+          </table>
+        </ion-col>
+      </ion-row>
+    </div>
+    <div *ngIf="NoBus hideMe" style="position: fixed;background-color: white;bottom: 65px;width: 62%;margin: auto !important;right: 19%;border-radius: 6px;border:1px solid #cccccc ; z-index: 1;text-align: center;">
+      <ion-row>
+        <ion-col col-10>
+        </ion-col>
+        <ion-col col-2>
+          <ion-icon name="close" (click)="hide()"></ion-icon>
+        </ion-col>
+      </ion-row>
+        <ion-row>
+          <ion-col col-12>
+            <h2>Unfortunately!!</h2>
+            <P>No buses available in this Area</P>
+            <p>please select another location</p>
+            <!-- <img src="assets/imgs/errNoBus.png"  style="margin:auto;"> -->
+          </ion-col>
+        </ion-row>
+      </div>
+  </div>
+
+  <!-- <img [hidden]="true" src="assets/imgs/bus587.png"> -->
+</ion-content>

@@ -1,0 +1,204 @@
+// http://ionicframework.com/docs/theming/
+
+
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+
+html[dir="rtl"] body > ion-app {
+    text-align: right;
+}
+.rtl .item-input-has-focus .label-md[floating], .rtl .input-has-focus .label-md[floating], .rtl .item-input-has-value .label-md[floating], .rtl .input-has-value .label-md[floating], .rtl .item-input-has-value .label-ios[floating]{
+    -webkit-transform: translate3d(20%, 0, 0) scale(0.8) !important; 
+       transform: translate3d(20%, 0, 0) scale(0.8) !important; 
+   }
+@font-face {
+    font-family: "Cairo-Regular";
+    src:url("../assets/cairofont/cairo.ttf");
+}
+ion-app{
+    font-family: "Cairo-Regular" !important;
+}
+.toolbar-title.toolbar-title-md {
+    text-align: center !important;
+    text-transform: capitalize;
+}
+html[dir="rtl"] .closeInfo{
+float: left;
+}
+html[dir="ltr"] .closeInfo{
+    float: right;
+    }
+
+.pgm-html-info-content-frame{
+    padding: 0 5px !important;
+}
+.pgm-html-info-content-box{
+    padding: 0px !important;
+}
+.toolbar-title.toolbar-title-ios {
+    text-transform: capitalize;
+}
+.toast-message {
+    font-family: "Cairo-Regular" !important;
+ }
+ html[dir="rtl"] body > ion-app > ion-alert .alert-button-group {
+    flex-direction: row-reverse !important;
+    justify-content: flex-end !important;
+    
+}
+.bar-button {
+  width: 60px !important;
+}
+.loading-wrapper{
+    box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    background: transparent !important;
+}
+// .ion-page > ion-content{
+//   background-color: white !important;
+// }
+ion-spinner{
+    width: 50px !important;
+    height: 50px !important;
+}
+html[dir="rtl"] body > ion-app > ion-alert .alert-radio-icon{
+    left: auto !important;
+    right: 13px !important;
+}
+ .ion-page.show-page {
+    font-family: "Cairo-Regular" !important;
+}
+.rtl .back-button.show-back-button {
+    transform: rotate(180deg) !important;
+}
+form{
+    overflow-y: scroll !important;
+}
+.ios .rtl .back-button.show-back-button {
+    transform: rotate(0deg) !important;
+}
+.rtl ion-icon.back-button-icon.icon.icon-ios.back-button-icon-ios.ion-ios-arrow-back{
+    transform: rotate(180deg) !important;
+}
+.rtl .text-input{
+    text-align: right !important;
+}
+.error-msg{
+    color:red !important;
+    padding: 9px 16px 0 16px;
+}
+.toast-message {
+    font-family: "Cairo-Regular" !important;
+ }
+
+ @font-face {
+
+    font-family: "na5il";
+    src:url("../assets/icons_fonts/na5il.eot");
+    src:url("../assets/icons_fonts/na5il.eot") format("embedded-opentype"),
+      url("../assets/icons_fonts/na5il.woff") format("woff"),
+      url("../assets/icons_fonts/na5il.ttf") format("truetype"),
+      url("../assets/icons_fonts/na5il.svg") format("svg");
+    font-weight: normal;
+    font-style: normal;
+  
+  }
+  @font-face {
+
+    font-family: "na5il2";
+    src:url("../assets/icons_fonts/autofonts/na5il.eot");
+    src:url("../assets/icons_fonts/autofonts/na5il.eot") format("embedded-opentype"),
+      url("../assets/icons_fonts/autofonts/na5il.woff") format("woff"),
+      url("../assets/icons_fonts/autofonts/na5il.ttf") format("truetype"),
+      url("../assets/icons_fonts/autofonts/na5il.svg") format("svg");
+    font-weight: normal;
+    font-style: normal;
+  
+  }
+
+  .popover-content ion-label{
+    white-space: normal !important;
+    text-transform: capitalize !important;
+  }
+
+  .ion-ios-hometab:before ,
+  .ion-ios-hometab-circle:before ,
+  .ion-ios-hometab-circle-outline:before ,
+  .ion-ios-hometab-outline:before ,
+  .ion-md-hometab:before ,
+  .ion-md-hometab-circle:before ,
+  .ion-md-hometab-circle-outline:before ,
+  .ion-md-hometab-outline:before  {
+    font-family: "na5il" !important;
+    content: '\61';
+  }
+  .ion-ios-review:before ,
+  .ion-ios-review-circle:before ,
+  .ion-ios-review-circle-outline:before ,
+  .ion-ios-review-outline:before ,
+  .ion-md-review:before ,
+  .ion-md-review-circle:before ,
+  .ion-md-review-circle-outline:before ,
+  .ion-md-review-outline:before  {
+    font-family: "na5il2" !important;
+    content: '\63';
+  }
+  .ion-ios-aprice:before ,
+  .ion-ios-aprice-circle:before ,
+  .ion-ios-aprice-circle-outline:before ,
+  .ion-ios-aprice-outline:before ,
+  .ion-md-aprice:before ,
+  .ion-md-aprice-circle:before ,
+  .ion-md-aprice-circle-outline:before ,
+  .ion-md-aprice-outline:before  {
+    font-family: "na5il2" !important;
+    content: '\62';
+  }
+  .ion-ios-univtab:before ,
+  .ion-ios-univtab-circle:before ,
+  .ion-ios-univtab-circle-outline:before ,
+  .ion-ios-univtab-outline:before ,
+  .ion-md-univtab:before ,
+  .ion-md-univtab-circle:before ,
+  .ion-md-univtab-circle-outline:before ,
+  .ion-md-univtab-outline:before  {
+    font-family: "na5il2" !important;
+    content: '\64';
+  }
+  .ion-ios-triptab:before ,
+  .ion-ios-triptab-circle:before ,
+  .ion-ios-triptab-circle-outline:before ,
+  .ion-ios-triptab-outline:before ,
+  .ion-md-triptab:before ,
+  .ion-md-triptab-circle:before ,
+  .ion-md-triptab-circle-outline:before ,
+  .ion-md-triptab-outline:before  {
+    font-family: "na5il" !important;
+    content: '\63';
+  }
+  .ion-ios-accounttab:before ,
+  .ion-ios-accounttab-circle:before ,
+  .ion-ios-accounttab-circle-outline:before ,
+  .ion-ios-accounttab-outline:before ,
+  .ion-md-accounttab:before ,
+  .ion-md-accounttab-circle:before ,
+  .ion-md-accounttab-circle-outline:before ,
+  .ion-md-accounttab-outline:before  {
+    font-family: "na5il" !important;
+    content: '\62';
+  }
+
+  .rtl .text-input{
+      direction: rtl !important;
+  }

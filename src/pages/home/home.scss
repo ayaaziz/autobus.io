@@ -1,0 +1,42 @@
+page-home {
+    ion-title  {
+        color: white;
+        font-size: 24px !important;
+        width: 100% !important;
+        text-align: center
+
+       }
+       .pick-place{
+         position: absolute;
+         margin: 5 auto;
+       }
+       .pick-place ion-icon{
+         margin-right: 5px;
+       }
+       .nearbusTime{
+        position: absolute;
+        top: 20%;
+        left: 30%;
+        right: 45%;
+        text-align: center;
+        margin: auto;
+         z-index: 2;
+         font-size: 0.8em;
+         width: 26px;
+         word-wrap:break-word;
+         line-height: 12px;
+       }
+       .nearbusTime:first-line{
+        font-weight:bold;
+        font-size: 1em !important;
+       }
+       #centerMarkerImage {
+        position: fixed;
+        // left: 48%;
+        // top: 48%;
+        margin: auto;
+        width: 60px; // image width
+        height: 60px; // image height
+        z-index: 1;
+      }
+}
