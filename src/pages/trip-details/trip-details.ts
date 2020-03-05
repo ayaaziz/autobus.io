@@ -64,6 +64,14 @@ export class TripDetailsPage {
   busEstDeptTime2;
   busAveStopTime2;
   busEstArrivall2;
+
+  secondTripBuses = [];
+  currentLoc;
+  locAddress;
+  universitID;
+  page = 1;
+  hideMoreBtn = true;
+  noData = false;
   //aya/////
 
 
@@ -84,6 +92,17 @@ export class TripDetailsPage {
     });
     // calculate trip time
     this.calculateTime();
+
+    console.log("tripDetails=> "+JSON.stringify(this.tripDetails))
+
+    //aya
+
+    if(this.tripDetails.secondTrip) {
+      if(this.tripDetails.secondTrip.length > 0) {
+        this.secondTripBuses = this.tripDetails.secondTrip;
+        console.log("secondTripBuses** "+JSON.stringify(this.secondTripBuses));
+      }
+    }
   }
 
   // Function to calculate trip details
@@ -182,7 +201,20 @@ export class TripDetailsPage {
     localStorage.setItem("DetailsViewActive","1");
     this.busNumber = this.tripDetails.bus_number;
     this.driver_name = this.tripDetails.driver_name;
+
+    
+    
   }
+
+  //aya
+  openInnerTripDetails(item) {
+    this.navCtrl.push("TripDetailsPage",{details:item, type: this.type , fromAddress: this.fromAddress , fromLoc : this.fromLoc, toLoc: this.toLoc, toAddress: this.toAddress});    
+  }
+
+  //aya
+
+
+
   //open map native apps installed on mobile
   openOnMap() {
     let latlng = (this.tripDetails.busRouteDistanceFeet.bus_location).split(',');
@@ -338,4 +370,7 @@ export class TripDetailsPage {
       tripDetails: this.tripDetails
     });
   }
+
+
+
 }

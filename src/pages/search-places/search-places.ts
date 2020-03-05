@@ -36,6 +36,8 @@ export class SearchPlacesPage {
   toAddress;
   toLoc;
   buses = [];
+  secondTripBuses = [];
+
   type;
   currentLoc;
   locAddress;
@@ -83,131 +85,266 @@ bus_status
     this.getSearch();
     this.loadMap();
   }
+  // getSearch(){
+  //       // this.type == 1 means user determine source and destination else search unversity routes
+  //       if(this.type == 1){
+  //         this.storage.get("user_token").then(val => {
+  //           let access = val ? val.access_token : null
+  //           //alert(access)
+  //           this.serviceApi.searchResults(1,this.page,access,this.helper.currentLang,this.fromAddress,this.fromLoc,
+  //             this.toAddress,this.toLoc,this.helper.transType,(data)=>{
+  //               if(!data.success){
+  //                 if(data.status == -6){
+  //                   this.noData = true;
+  //                   this.hideMoreBtn = true;
+  //                   this.helper.presentToast(this.translate.instant("outOfZone"));
+  //                   return;
+  //                 }
+  //                 else if(data.status == -5){
+  //                   this.noData = true;
+  //                   this.hideMoreBtn = true;
+  //                   this.helper.presentToast(this.translate.instant("sameSourceAnndDestination"));
+  //                   return;
+  //                 }
+  //                 else if(data.status == -7){
+  //                     if(data.errors.workTime)
+  //                     this.helper.presentAlert(data.errors.workTime);
+  //                     return;
+  //                   }
+  //               }
+  //               console.log(JSON.stringify(data));
+  //               if(!data.data.data){
+  //                 this.noData = true;
+  //                 this.hideMoreBtn = true;
+  //                 return;
+  //               }
+  //               if(this.page == 1 && data.data.data.length == 0){
+  //                 this.noData = true;
+  //                 this.hideMoreBtn = true;
+  //               }
+  //               //this.buses = data.data.data;
+  //               if(data.data.data.length > 0){
+  //                 data.data.data.forEach(element => {
+  //                 this.buses.push(element);
+  //               });
+  //               console.log(this.buses);
+  //               this.page += 1;
+  //               if(data.data.data.length < data.data.per_page){
+  //                 this.hideMoreBtn = true;
+  //               }
+  //               else{
+  //                 this.hideMoreBtn = false;
+  //               }
+  //               }
+  //               else{
+  //                 this.hideMoreBtn = true;
+  //               }
+
+  //             },(data)=>{
+  //               if(data.name == "TimeoutError"){
+  //                 this.helper.presentToast(this.translate.instant("TimeoutError"));
+  //               }
+  //               else{
+  //                 this.helper.presentToast(this.translate.instant("serverErr"));
+  //               }
+  //             })
+  //         })
+  //       }
+  //       else if(this.type == 2){
+  //         this.storage.get("user_token").then(val => {
+  //           let access = val ? val.access_token : null
+  //           this.serviceApi.searchUniversityResults(2,this.toAddress,this.page,this.helper.transType,access,this.helper.currentLang,this.fromLoc,this.universitID,
+  //             this.locAddress,(data)=>{
+  //               if(!data.success){
+  //                 if(data.status == -6){
+  //                   this.noData = true;
+  //                   this.hideMoreBtn = true;
+  //                   this.helper.presentToast(this.translate.instant("outOfZone"));
+  //                   return;
+  //                 }
+  //                 else if(data.status == -5){
+  //                   this.noData = true;
+  //                   this.hideMoreBtn = true;
+  //                   this.helper.presentToast(this.translate.instant("sameSourceAnndDestination"));
+  //                   return;
+  //                 }
+  //                 else if(data.status == -7){
+  //                     if(data.errors.workTime)
+  //                     this.helper.presentAlert(data.errors.workTime);
+  //                     return;
+  //                 }
+  //               }
+  //               console.log(JSON.stringify(data));
+  //               if(!data.data.data){
+  //                 this.noData = true;
+  //                 this.hideMoreBtn = true;
+  //                 return;
+  //               }
+  //               if(this.page == 1 && data.data.data.length == 0){
+  //                 this.noData = true;
+  //               }
+  //               if(data.data.data.length > 0){
+
+  //               data.data.data.forEach(element => {
+
+  //                 this.buses.push(element);
+  //               });
+
+  //               this.page += 1;
+  //               if(data.data.data.length < data.data.per_page){
+  //                 this.hideMoreBtn = true;
+  //               }
+  //               else{
+  //                 this.hideMoreBtn = false;
+  //               }
+  //             }
+  //             },(data)=>{
+  //               if(data.name == "TimeoutError"){
+  //                 this.helper.presentToast(this.translate.instant("TimeoutError"));
+  //               }
+  //               else{
+  //                 this.helper.presentToast(this.translate.instant("serverErr"));
+  //               }
+  //             })
+  //         })
+  //       }
+
+  // }
+
+//ayaaaa//
   getSearch(){
-        // this.type == 1 means user determine source and destination else search unversity routes
-        if(this.type == 1){
-          this.storage.get("user_token").then(val => {
-            let access = val ? val.access_token : null
-            //alert(access)
-            this.serviceApi.searchResults(1,this.page,access,this.helper.currentLang,this.fromAddress,this.fromLoc,
-              this.toAddress,this.toLoc,this.helper.transType,(data)=>{
-                if(!data.success){
-                  if(data.status == -6){
-                    this.noData = true;
-                    this.hideMoreBtn = true;
-                    this.helper.presentToast(this.translate.instant("outOfZone"));
-                    return;
-                  }
-                  else if(data.status == -5){
-                    this.noData = true;
-                    this.hideMoreBtn = true;
-                    this.helper.presentToast(this.translate.instant("sameSourceAnndDestination"));
-                    return;
-                  }
-                  else if(data.status == -7){
-                      if(data.errors.workTime)
-                      this.helper.presentAlert(data.errors.workTime);
-                      return;
-                    }
-                }
-                console.log(JSON.stringify(data));
-                if(!data.data.data){
-                  this.noData = true;
-                  this.hideMoreBtn = true;
-                  return;
-                }
-                if(this.page == 1 && data.data.data.length == 0){
-                  this.noData = true;
-                  this.hideMoreBtn = true;
-                }
-                //this.buses = data.data.data;
-                if(data.data.data.length > 0){
-                  data.data.data.forEach(element => {
-                  this.buses.push(element);
-                });
-                console.log(this.buses);
-                this.page += 1;
-                if(data.data.data.length < data.data.per_page){
-                  this.hideMoreBtn = true;
-                }
-                else{
-                  this.hideMoreBtn = false;
-                }
-                }
-                else{
-                  this.hideMoreBtn = true;
-                }
-
-              },(data)=>{
-                if(data.name == "TimeoutError"){
-                  this.helper.presentToast(this.translate.instant("TimeoutError"));
-                }
-                else{
-                  this.helper.presentToast(this.translate.instant("serverErr"));
-                }
-              })
-          })
-        }
-        else if(this.type == 2){
-          this.storage.get("user_token").then(val => {
-            let access = val ? val.access_token : null
-            this.serviceApi.searchUniversityResults(2,this.toAddress,this.page,this.helper.transType,access,this.helper.currentLang,this.fromLoc,this.universitID,
-              this.locAddress,(data)=>{
-                if(!data.success){
-                  if(data.status == -6){
-                    this.noData = true;
-                    this.hideMoreBtn = true;
-                    this.helper.presentToast(this.translate.instant("outOfZone"));
-                    return;
-                  }
-                  else if(data.status == -5){
-                    this.noData = true;
-                    this.hideMoreBtn = true;
-                    this.helper.presentToast(this.translate.instant("sameSourceAnndDestination"));
-                    return;
-                  }
-                  else if(data.status == -7){
-                      if(data.errors.workTime)
-                      this.helper.presentAlert(data.errors.workTime);
-                      return;
-                  }
-                }
-                console.log(JSON.stringify(data));
-                if(!data.data.data){
-                  this.noData = true;
-                  this.hideMoreBtn = true;
-                  return;
-                }
-                if(this.page == 1 && data.data.data.length == 0){
-                  this.noData = true;
-                }
-                if(data.data.data.length > 0){
-
-                data.data.data.forEach(element => {
-
-                  this.buses.push(element);
-                });
-
-                this.page += 1;
-                if(data.data.data.length < data.data.per_page){
-                  this.hideMoreBtn = true;
-                }
-                else{
-                  this.hideMoreBtn = false;
-                }
+    // this.type == 1 means user determine source and destination else search unversity routes
+    if(this.type == 1){
+      this.storage.get("user_token").then(val => {
+        let access = val ? val.access_token : null
+        //alert(access)
+        this.serviceApi.searchInnerResults(1,this.page,access,this.helper.currentLang,this.fromAddress,this.fromLoc,
+          this.toAddress,this.toLoc,this.helper.transType,(data)=>{
+            if(!data.success){
+              if(data.status == -6){
+                this.noData = true;
+                this.hideMoreBtn = true;
+                this.helper.presentToast(this.translate.instant("outOfZone"));
+                return;
               }
-              },(data)=>{
-                if(data.name == "TimeoutError"){
-                  this.helper.presentToast(this.translate.instant("TimeoutError"));
+              else if(data.status == -5){
+                this.noData = true;
+                this.hideMoreBtn = true;
+                this.helper.presentToast(this.translate.instant("sameSourceAnndDestination"));
+                return;
+              }
+              else if(data.status == -7){
+                  if(data.errors.workTime)
+                  this.helper.presentAlert(data.errors.workTime);
+                  return;
                 }
-                else{
-                  this.helper.presentToast(this.translate.instant("serverErr"));
-                }
-              })
-          })
-        }
+            }
+            console.log(JSON.stringify(data));
+            if(!data.data.data){
+              this.noData = true;
+              this.hideMoreBtn = true;
+              return;
+            }
+            if(this.page == 1 && data.data.data.length == 0){
+              this.noData = true;
+              this.hideMoreBtn = true;
+            }
+            //this.buses = data.data.data;
+            if(data.data.data.length > 0){
+              data.data.data.forEach(element => {
 
-  }
+                //aya
+                if(!element.secondTrip) {
+                  this.buses.push(element);
+                } else {
+                  this.secondTripBuses.push(element);
+                }
+            });
+            console.log(this.buses);
+            this.page += 1;
+            if(data.data.data.length < data.data.per_page){
+              this.hideMoreBtn = true;
+            }
+            else{
+              this.hideMoreBtn = false;
+            }
+            }
+            else{
+              this.hideMoreBtn = true;
+            }
+
+          },(data)=>{
+            if(data.name == "TimeoutError"){
+              this.helper.presentToast(this.translate.instant("TimeoutError"));
+            }
+            else{
+              this.helper.presentToast(this.translate.instant("serverErr"));
+            }
+          })
+      })
+    }
+    else if(this.type == 2){
+      this.storage.get("user_token").then(val => {
+        let access = val ? val.access_token : null
+        this.serviceApi.searchUniversityResults(2,this.toAddress,this.page,this.helper.transType,access,this.helper.currentLang,this.fromLoc,this.universitID,
+          this.locAddress,(data)=>{
+            if(!data.success){
+              if(data.status == -6){
+                this.noData = true;
+                this.hideMoreBtn = true;
+                this.helper.presentToast(this.translate.instant("outOfZone"));
+                return;
+              }
+              else if(data.status == -5){
+                this.noData = true;
+                this.hideMoreBtn = true;
+                this.helper.presentToast(this.translate.instant("sameSourceAnndDestination"));
+                return;
+              }
+              else if(data.status == -7){
+                  if(data.errors.workTime)
+                  this.helper.presentAlert(data.errors.workTime);
+                  return;
+              }
+            }
+            console.log(JSON.stringify(data));
+            if(!data.data.data){
+              this.noData = true;
+              this.hideMoreBtn = true;
+              return;
+            }
+            if(this.page == 1 && data.data.data.length == 0){
+              this.noData = true;
+            }
+            if(data.data.data.length > 0){
+
+            data.data.data.forEach(element => {
+
+              this.buses.push(element);
+            });
+
+            this.page += 1;
+            if(data.data.data.length < data.data.per_page){
+              this.hideMoreBtn = true;
+            }
+            else{
+              this.hideMoreBtn = false;
+            }
+          }
+          },(data)=>{
+            if(data.name == "TimeoutError"){
+              this.helper.presentToast(this.translate.instant("TimeoutError"));
+            }
+            else{
+              this.helper.presentToast(this.translate.instant("serverErr"));
+            }
+          })
+      })
+    }
+
+}
+//ayaaa///
+
   // Function executed when view loaded
   ionViewDidLoad() {
     console.log('ionViewDidLoad SearchPlacesPage');

@@ -139,7 +139,7 @@
 
                       <!--ayaaaaaaaa-->
 
-                      <ion-row style="font-size:14pt">
+                      <!--<ion-row style="font-size:14pt">
                         <ion-col col-4 style="text-align:center;color:#424242">{{userStopTime}}</ion-col>
                         <ion-col col-8>
                           <ion-row>
@@ -171,9 +171,148 @@
     
                             </ion-row>
                           </ion-col>
-                        </ion-row>
+                        </ion-row>-->
                         <!--ayaaaaaaaa-->
 
+                        <!--ayaaaaaa-->
+                        <!-- <ion-scroll *ngIf="tripDetails.secondTrip" #scrollWeb scrollY="true" style="height:100%;background:#fff !important;" id="move-in-to-place"> -->
+                        <ion-scroll *ngIf="tripDetails.secondTrip && tripDetails.secondTrip.length > 0" #scrollWeb scrollY="true" style="height:100%;background:#fff !important;" id="move-in-to-place">                          
+                          <div class="icon-drag-raw">
+                            <ion-icon name="funnel" class="drag-icon"></ion-icon>
+                          </div>
+                        <ion-row style="text-align:center;" *ngIf="noData">
+                          <ion-col col-12>
+                            {{'noSearchData' | translate}}
+                          </ion-col>
+                        </ion-row>
+                          <!-- <ion-col *ngFor="let item of secondTripBuses" (click)="openInnerTripDetails(item)" >
+                            <ion-row>
+                              <ion-col col-2>
+                              </ion-col>
+                              <ion-col style="padding:0;">
+                                <label style="color: #006098;font-size: 16px;font-size: 17px">  {{ 'bus' | translate }} #{{item.bus_number}} </label>
+                              
+                              </ion-col>
+                              <ion-col style="padding:0;">
+                               
+                                <ion-label style="margin: 0;color: #006098;  font-size: 17px;background-position-x: center; background-image: url(assets/imgs/priceBg.png);  background-repeat: no-repeat;  padding: 9px 0; text-align: center;">    {{item.fare}} JOD</ion-label>
+                              </ion-col>
+                            </ion-row>
+                            <ion-row>
+                              <ion-col col-2 style="margin: auto!important;">
+                              
+                              <img src="assets/imgs/icBusBig.png" style="margin: auto;display: block;width: 30px;height: 20px;">
+                            </ion-col>
+                    
+                              <ion-col col-5 style="padding:0;">
+                                <ion-row>
+                                  <label style="color: #a7a9ac;font-size: 17px;">{{'EST_ARRIVAL'|translate}}</label>
+                                </ion-row>
+                                <ion-row>
+                                  <label style="color: black;font-size: 17px;">{{item.busRouteDistanceFeet?.feet?.duration?.text}}</label>
+                                </ion-row>
+                              </ion-col>
+                              <ion-col col-5 style="padding:0;">
+                                <ion-row>
+                                  <label style="color: #a7a9ac;font-size: 17px;">{{'distance'|translate}}</label>
+                                </ion-row>
+                                <ion-row>
+                                  <label style="color: black;font-size: 17px;">{{item.routes?.distance?.text}}</label>
+                                </ion-row>
+                              </ion-col>
+                    
+                    
+                            </ion-row>
+                            <ion-row >
+                              <ion-col col-2>
+                              </ion-col>
+                              <ion-col col-5 style="padding:0;">
+                                <ion-row>
+                                  <label style="color: #a7a9ac;font-size: 17px;">{{'Start'|translate}}</label>
+                                </ion-row>
+                                <ion-row>
+                                  <label style="color: black;font-size: 17px;">{{item.route_start_address}}</label>
+                                </ion-row>
+                              </ion-col>
+                              <ion-col col-5 style="padding:0;">
+                                <ion-row>
+                                  <label style="color: #a7a9ac;font-size: 17px;">{{'STOP'|translate}}</label>
+                                </ion-row>
+                                <ion-row>
+                                  <label style="color: black;font-size: 17px;">{{item.route_end_address}}</label>
+                                </ion-row>
+                              </ion-col>
+                            </ion-row>
+                            <div style="background-color:#e8e8e8 ;height: 2px;margin-right: 20px;margin-left: 20px;margin-top: 20px"></div>
+                          </ion-col> -->
+               
+                         <ion-col *ngFor="let item of secondTripBuses" (click)="openInnerTripDetails(item)" >
+                            <ion-row>
+                              <ion-col col-2>
+                              </ion-col>
+                              <ion-col style="padding:0;">
+                                <label style="color: #006098;font-size: 16px;font-size: 17px">  {{ 'bus' | translate }} #{{item.bus_number}} </label>
+                              
+                              </ion-col>
+                              <ion-col style="padding:0;">
+                               
+                                <ion-label style="margin: 0;color: #006098;  font-size: 17px;background-position-x: center; background-image: url(assets/imgs/priceBg.png);  background-repeat: no-repeat;  padding: 9px 0; text-align: center;">    {{item.fare}} JOD</ion-label>
+                              </ion-col>
+                            </ion-row>
+                            <ion-row>
+                              <ion-col col-2 style="margin: auto!important;">
+                              
+                              <img src="assets/imgs/icBusBig.png" style="margin: auto;display: block;width: 30px;height: 20px;">
+                            </ion-col>
+                    
+                              <ion-col col-5 style="padding:0;">
+                                <ion-row>
+                                  <label style="color: #a7a9ac;font-size: 17px;">{{'EST_ARRIVAL'|translate}}</label>
+                                </ion-row>
+                                <ion-row>
+                                  <label style="color: black;font-size: 17px;">{{item.busRouteDistanceFeet?.feet?.duration?.text}}</label>
+                                </ion-row>
+                              </ion-col>
+                              <ion-col col-5 style="padding:0;">
+                                <ion-row>
+                                  <label style="color: #a7a9ac;font-size: 17px;">{{'distance'|translate}}</label>
+                                </ion-row>
+                                <ion-row>
+                                  <label style="color: black;font-size: 17px;">{{item.routes?.distance?.text}}</label>
+                                </ion-row>
+                              </ion-col>
+                    
+                    
+                            </ion-row>
+                            <ion-row >
+                              <ion-col col-2>
+                              </ion-col>
+                              <ion-col col-5 style="padding:0;">
+                                <ion-row>
+                                  <label style="color: #a7a9ac;font-size: 17px;">{{'Start'|translate}}</label>
+                                </ion-row>
+                                <ion-row>
+                                  <label style="color: black;font-size: 17px;">{{item.route_start_address}}</label>
+                                </ion-row>
+                              </ion-col>
+                              <ion-col col-5 style="padding:0;">
+                                <ion-row>
+                                  <label style="color: #a7a9ac;font-size: 17px;">{{'STOP'|translate}}</label>
+                                </ion-row>
+                                <ion-row>
+                                  <label style="color: black;font-size: 17px;">{{item.route_end_address}}</label>
+                                </ion-row>
+                              </ion-col>
+                            </ion-row>
+                            <div style="background-color:#e8e8e8 ;height: 2px;margin-right: 20px;margin-left: 20px;margin-top: 20px"></div>
+                          </ion-col>
+                          <div style="margin-bottom: 20px;">
+                            <button ion-button (click)="ionViewDidLoad()" [hidden]="hideMoreBtn" style="margin:auto;background-color:#ff8300;width: 83%;display: block;text-transform: none;font-size: 14px;">{{'loadMore'|translate}}</button>
+                          </div>
+                        </ion-scroll>
+
+                        <!--ayaaaaaa-->
+                        
 
                       <ion-row *ngIf="userDestAddress" style="font-size:14pt">
                           <ion-col col-4 style="text-align:center;color:#424242">{{endTime}}</ion-col>

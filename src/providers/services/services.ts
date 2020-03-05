@@ -503,6 +503,38 @@ export class ServicesProvider {
       )
   }
 
+
+  //ayaaaaa///////
+  searchInnerResults(trip_type,page,access_token,lang,from_address,from_location,to_address,to_location,trans_type,SuccessCallback,FailureCallback) {
+    let loader = this.loadingCtrl.create({
+      content: "",
+    });
+    loader.present();
+    let headers = new HttpHeaders();
+    headers = headers.set('Content-Type', 'application/x-www-form-urlencoded');
+    if(access_token){
+      headers = headers.set('Content-Type', 'application/x-www-form-urlencoded').set('Authorization', 'Bearer '+ localStorage.getItem("kdkvfkhggssoauto"))
+    }
+    let parameter = new HttpParams().set('lang',lang).set('page',page).set('trans_type',trans_type).set('from_location',from_location).set('to_location',to_location).set("to_address",to_address).set("from_address",from_address).set("type",trip_type);
+    let serviceUrl = this.helper.service_url + 'searchBusNearByITRoots';
+    this.http.post(serviceUrl,parameter,  { headers: headers })
+
+      .subscribe(
+        data => {
+          console.log("updateSuccess "+JSON.stringify(data))
+          loader.dismiss().catch(() => console.log('ERROR CATCH: LoadingController dismiss'));
+          SuccessCallback(data)
+        },
+        err => {
+          console.log("updateFail"+JSON.stringify(err))
+          loader.dismiss().catch(() => console.log('ERROR CATCH: LoadingController dismiss'));
+          FailureCallback(err)
+        }
+      )
+  }
+  //ayaaaaa///////
+  
+
   //--------------------------- Search University Results -------------------------------
   searchUniversityResults(trip_type,to_address,page,transType,access_token,lang,current_location,university_id,
     current_Address,SuccessCallback,FailureCallback){
