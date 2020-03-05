@@ -175,11 +175,20 @@
                         <!--ayaaaaaaaa-->
 
                         <!--ayaaaaaa-->
-                        <!-- <ion-scroll *ngIf="tripDetails.secondTrip" #scrollWeb scrollY="true" style="height:100%;background:#fff !important;" id="move-in-to-place"> -->
-                        <ion-scroll *ngIf="tripDetails.secondTrip && tripDetails.secondTrip.length > 0" #scrollWeb scrollY="true" style="height:100%;background:#fff !important;" id="move-in-to-place">                          
+                        <!-- <ion-scroll *ngIf="tripDetails.secondTrip && tripDetails.secondTrip.length > 0" #scrollWeb scrollY="true" style="height:100%;background:#fff !important;" id="move-in-to-place2">                           -->
+                        
+                        <ion-scroll *ngIf="tripDetails.secondTrip" #scrollWeb scrollY="true" style="height:100%;background:#fff !important;" id="move-in-to-place2">                          
                           <div class="icon-drag-raw">
                             <ion-icon name="funnel" class="drag-icon"></ion-icon>
                           </div>
+                          <ion-row>
+                            <ion-col col-12>
+                              <p style="font-size: 20px;">
+                                  Available Buses For Second Trip
+                              </p>
+                              
+                            </ion-col>
+                          </ion-row>
                         <ion-row style="text-align:center;" *ngIf="noData">
                           <ion-col col-12>
                             {{'noSearchData' | translate}}

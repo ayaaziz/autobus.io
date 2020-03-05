@@ -1,5 +1,5 @@
 import { Component, ViewChild, NgZone } from '@angular/core';
-import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Platform, Scroll } from 'ionic-angular';
 import { TranslateService } from '@ngx-translate/core';
 import { HelperProvider } from '../../providers/helper/helper';
 import { MyLocation, LocationService } from '@ionic-native/google-maps';
@@ -32,6 +32,8 @@ var updateCurrentBusLocInterval: number;
 })
 export class TripDetailsPage {
   @ViewChild('map') mapElement;
+  @ViewChild('scrollWeb') scrollWeb: Scroll;
+  
   userSource = "Source";
   busEstArrivall;
   startTime;
@@ -101,6 +103,8 @@ export class TripDetailsPage {
       if(this.tripDetails.secondTrip.length > 0) {
         this.secondTripBuses = this.tripDetails.secondTrip;
         console.log("secondTripBuses** "+JSON.stringify(this.secondTripBuses));
+      } else {
+        this.noData = true;
       }
     }
   }
