@@ -83,6 +83,7 @@ bus_status
     });
 
     this.getSearch();
+
     this.loadMap();
   }
   // getSearch(){
@@ -253,12 +254,27 @@ bus_status
             if(data.data.data.length > 0){
               data.data.data.forEach(element => {
 
-                //aya
-                if(!element.secondTrip) {
-                  this.buses.push(element);
-                } else {
-                  this.secondTripBuses.push(element);
-                }
+                // //aya
+                // if(!element.secondTrip) {
+                //   this.buses.push(element);
+                // } else {
+                //   this.secondTripBuses.push(element);
+                // }
+
+                  //aya
+                  if(!element.secondTrip) {
+                    this.buses.push( {
+                      el: element,
+                      type:"directTrip"
+                    });
+                  } else {
+                    this.buses.push( {
+                      el: element,
+                      type:"inDirectTrip"
+                    });
+                    // this.secondTripBuses.push(element);
+                  }
+
             });
             console.log(this.buses);
             this.page += 1;
@@ -268,6 +284,10 @@ bus_status
             else{
               this.hideMoreBtn = false;
             }
+
+            this.loadMap();
+            
+
             }
             else{
               this.hideMoreBtn = true;
@@ -320,7 +340,10 @@ bus_status
 
             data.data.data.forEach(element => {
 
-              this.buses.push(element);
+              this.buses.push({
+                el: element,
+                type:"directTrip"
+              });
             });
 
             this.page += 1;
@@ -384,7 +407,10 @@ bus_status
   }
   initMap() {
     if(this.noData != true){
-    let latlng = new google.maps.LatLng(this.buses[0].lat, this.buses[0].lng);
+      console.log("buses** "+JSON.stringify(this.buses))
+      console.log("buses[0]** "+this.buses[0])
+
+    let latlng = new google.maps.LatLng(this.buses[0].el.lat, this.buses[0].el.lng);
     var myOptions = {
       zoom: 15,
       center: latlng,
@@ -392,7 +418,7 @@ bus_status
       mapTypeId: google.maps.MapTypeId.ROADMAP
   };
   map = new google.maps.Map(document.getElementById("map_s"), myOptions);
-    var kmlLayer = new google.maps.KmlLayer(this.buses[0].path_file, {
+    var kmlLayer = new google.maps.KmlLayer(this.buses[0].el.path_file, {
       suppressInfoWindows: true,
       preserveViewport: true,
       map: map
@@ -400,7 +426,7 @@ bus_status
     let url = "assets/imgs/bus587.png";
 
     marker = new google.maps.Marker({
-      position: new google.maps.LatLng(this.buses[0].lat, this.buses[0].lng),
+      position: new google.maps.LatLng(this.buses[0].el.lat, this.buses[0].el.lng),
       map: map,
       draggable: false,
       //animation: google.maps.Animation.DROP,
@@ -411,10 +437,10 @@ bus_status
     });
    setTimeout(() => {
      $('img[src="assets/imgs/bus587.png"]').css({
-      'transform': 'rotate(' + (360 - parseInt(this.buses[0].angle)) + 'deg)'
+      'transform': 'rotate(' + (360 - parseInt(this.buses[0].el.angle)) + 'deg)'
     });
    }, 1000);
-    let stopLatlng = (this.buses[0].busRouteDistanceFeet.closetPoint).split(',');
+    let stopLatlng = (this.buses[0].el.busRouteDistanceFeet.closetPoint).split(',');
     new google.maps.Marker({
       position: new google.maps.LatLng(stopLatlng[0], stopLatlng[1]),
       map: map,
@@ -453,12 +479,12 @@ bus_status
         this.helper.presentToast(this.translate.instant("internetError"));
         return;
       }
-      this.serviceApi.getBusLocation(this.buses[0].bus_id, this.helper.currentLang, (data) => {
+      this.serviceApi.getBusLocation(this.buses[0].el.bus_id, this.helper.currentLang, (data) => {
         //this.bus_marker.setMap(null)
         this.user_marker.setMap(null);
         // this.bus_status = this.helper.busMove(this.buses[0].bus_status) == 1 ? this.translate.instant('move') : this.translate.instant('stop');
         $('img[src="assets/imgs/bus587.png"]').css({
-        'transform': 'rotate(' + (360 - parseInt(this.buses[0].angle)) + 'deg)'
+        'transform': 'rotate(' + (360 - parseInt(this.buses[0].el.angle)) + 'deg)'
       });
       map.setCenter({lat:parseFloat(data.data.bus.lat), lng:parseFloat(data.data.bus.lng)});
         this.transitionT([parseFloat(data.data.bus.lat),parseFloat(data.data.bus.lng)]);
