@@ -74,6 +74,7 @@ export class TripDetailsPage {
   page = 1;
   hideMoreBtn = true;
   noData = false;
+  innerResults:boolean = false;
   //aya/////
 
 
@@ -90,6 +91,9 @@ export class TripDetailsPage {
     this.bus_status = this.helper.busMove(this.tripDetails.bus_status) == 1 ? this.translate.instant('move') : this.translate.instant('stop');
     position = [parseFloat(this.tripDetails.lat),parseFloat(this.tripDetails.lng)];
     console.log("ttt " + this.fromLoc + " " + this.fromAddress + " " + this.toLoc + " " + this.toAddress);
+
+    // this.innerResults = this.navParams.get("innerResults");
+
     this.platform.ready().then(() => {
     });
     // calculate trip time
@@ -212,11 +216,9 @@ export class TripDetailsPage {
 
   //aya
   openInnerTripDetails(item) {
-    this.navCtrl.push("TripDetailsPage",{details:item, type: this.type , fromAddress: this.fromAddress , fromLoc : this.fromLoc, toLoc: this.toLoc, toAddress: this.toAddress});    
+    // this.navCtrl.push("TripDetailsPage",{details:item, type: this.type , fromAddress: this.fromAddress , fromLoc : this.fromLoc, toLoc: this.toLoc, toAddress: this.toAddress,innerResults:true});    
+    this.navCtrl.push("TripDetailsPage",{details:item, type: this.type , fromAddress: this.fromAddress , fromLoc : this.fromLoc, toLoc: this.toLoc, toAddress: this.toAddress});        
   }
-
-  //aya
-
 
 
   //open map native apps installed on mobile
@@ -288,6 +290,59 @@ export class TripDetailsPage {
         }
       });
     })
+
+
+  //   //ayaaaaa
+  //   let latlng2 = new google.maps.LatLng("31.991481", "36.0030164");
+  //   var myOptions = {
+  //     zoom: 15,
+  //     center: latlng2,
+  //     disableDefaultUI: true,
+  //     mapTypeId: google.maps.MapTypeId.ROADMAP
+  // };
+  // map = new google.maps.Map(document.getElementById("map_t"), myOptions);
+  //   var kmlLayer = new google.maps.KmlLayer(this.tripDetails.path_file, {
+  //     suppressInfoWindows: true,
+  //     preserveViewport: true,
+  //     map: map
+  //   });
+  //   let url2 = "assets/imgs/bus587.png";
+
+  //   marker = new google.maps.Marker({
+  //     position: new google.maps.LatLng(this.tripDetails.lat, this.tripDetails.lng),
+  //     map: map,
+  //     draggable: false,
+  //     //animation: google.maps.Animation.DROP,
+  //     icon: {
+  //       url: url2,
+  //       scaledSize: new google.maps.Size(40, 40)
+  //     }
+  //   });
+  //  setTimeout(() => {
+  //    $('img[src="assets/imgs/bus587.png"]').css({
+  //     'transform': 'rotate(' + (360 - parseInt(this.tripDetails.angle)) + 'deg)'
+  //   });
+  //  }, 1000);
+  //   let stopLatlng2 = (this.tripDetails.busRouteDistanceFeet.closetPoint).split(',');
+  //   new google.maps.Marker({
+  //     position: new google.maps.LatLng(stopLatlng2[0], stopLatlng2[1]),
+  //     map: map,
+  //     icon: {
+  //       url: 'assets/imgs/busStop.png',
+  //       draggable: false,
+  //     }
+  //   });
+  //   LocationService.getMyLocation().then((myLocation: MyLocation) => {
+  //     this.user_marker = new google.maps.Marker({
+  //       position: new google.maps.LatLng(myLocation.latLng.lat, myLocation.latLng.lng),
+  //       map: map,
+  //       icon: {
+  //         url: 'assets/icon/blue_dot.png',
+  //         draggable: false,
+  //       }
+  //     });
+  //   })
+  //   //ayaaaaa
     this.updateCurrentBusLocation()
   }
   ionViewWillLeave() {
