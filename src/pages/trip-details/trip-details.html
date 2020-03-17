@@ -140,35 +140,41 @@
                       <!--ayaaaaaaaa-->
                       <div *ngIf="tripDetails.secondTrip">
                         <ion-row style="font-size:14pt">
-                          <ion-col col-4 style="text-align:center;color:#424242">{{userStopTime}}</ion-col>
+                          <!-- <ion-col col-4 style="text-align:center;color:#424242">{{userStopTime}}</ion-col> -->
+                          <ion-col col-4 style="text-align:center;color:#424242">20 min.</ion-col>
+                          
                           <ion-col col-8>
                             <ion-row>
                             <ion-col col-2 style="color:#faf1e7;padding: 0 5px;"><img src="assets/imgs/icBusStopSmall@2x.png" style="width: 18px;"></ion-col>
                             <ion-col col-5 style="color:#424242;padding: 0 5px;">{{"busStop" | translate}}</ion-col>
-                            <ion-col (click)="openOnMap()" col-5 *ngIf="translate.getDefaultLang()!='ar'" style="padding: 2px 5px;color:#ff8300;font-size: 16px">{{"SeeMap" | translate}} <ion-icon name="arrow-round-forward"></ion-icon></ion-col>
-                            <ion-col (click)="openOnMap()" col-5 *ngIf="translate.getDefaultLang() =='ar'" style="padding: 2px 5px;color:#ff8300;font-size: 14px">{{"SeeMap" | translate}} <ion-icon style="transform: rotate(180deg)" name="arrow-round-forward"></ion-icon></ion-col>
+                            <ion-col col-5></ion-col>
+                            <!-- <ion-col (click)="openOnMap()" col-5 *ngIf="translate.getDefaultLang()!='ar'" style="padding: 2px 5px;color:#ff8300;font-size: 16px">{{"SeeMap" | translate}} <ion-icon name="arrow-round-forward"></ion-icon></ion-col>
+                            <ion-col (click)="openOnMap()" col-5 *ngIf="translate.getDefaultLang() =='ar'" style="padding: 2px 5px;color:#ff8300;font-size: 14px">{{"SeeMap" | translate}} <ion-icon style="transform: rotate(180deg)" name="arrow-round-forward"></ion-icon></ion-col> -->
                             </ion-row>
                           </ion-col>
                         </ion-row>
 
                         <ion-row style="font-size:14pt">
-                          <ion-col col-4 style="text-align:center;color:#424242">{{busEstArrivall}}</ion-col>
+                          <!-- <ion-col col-4 style="text-align:center;color:#424242">{{busEstArrivall}}</ion-col> -->
+                          <ion-col col-4></ion-col>
                           <ion-col col-8>
                             <ion-row>
                             <ion-col col-2 style="color:#faf1e7"><img src="assets/imgs/icBus@3x.png" style="width: 18px;"></ion-col>
-                            <ion-col col-10 style="color:#424242">{{"EstimatedArrival" | translate}} </ion-col>
+                            <!-- <ion-col col-10 style="color:#424242">{{"EstimatedArrival" | translate}} </ion-col> -->
+                            <ion-col col-10></ion-col>
       
                             </ion-row>
                           </ion-col>
                         </ion-row>
       
                         <ion-row style="font-size:14pt;padding: 0;">
-                            <ion-col col-4 style="color:#424242;padding: 0;text-align: center;"><div>{{busEstDeptTime}}</div><div style="margin-top: 30pt;">{{busAveStopTime}}</div></ion-col>
+                            <!-- <ion-col col-4 style="color:#424242;padding: 0;text-align: center;"><div>{{busEstDeptTime}}</div><div style="margin-top: 30pt;">{{busAveStopTime}}</div></ion-col> -->
+                            <ion-col col-4></ion-col>
                             <ion-col col-8>
                               <ion-row>
-                              <ion-col col-2 style="color:#ff8300;padding: 0;"><div style="border-radius: 10pt; margin: 0 12px;height:80pt;width:10px;background-color:#ff8300"></div></ion-col>
-                              <ion-col col-10 style="color:#424242;padding: 0;"><div >{{"EstimatedDeparture" | translate}}</div><div style="margin-top: 30pt;">{{"GatewayAveStop" | translate}}</div></ion-col>
-      
+                              <ion-col col-2 style="color:#ff8300;padding: 0;"><div style="border-radius: 10pt; margin: 0 12px;height:30pt;width:10px;background-color:#ff8300"></div></ion-col>
+                              <ion-col col-10></ion-col>
+                              <!-- <ion-col col-10 style="color:#424242;padding: 0;"><div >{{"EstimatedDeparture" | translate}}</div><div style="margin-top: 30pt;">{{"GatewayAveStop" | translate}}</div></ion-col> -->
                               </ion-row>
                             </ion-col>
                         </ion-row>
@@ -265,12 +271,14 @@
                         
 
                       <ion-row *ngIf="userDestAddress" style="font-size:14pt">
-                          <ion-col col-4 style="text-align:center;color:#424242">{{endTime}}</ion-col>
+                          <!-- <ion-col col-4 style="text-align:center;color:#424242">{{endTime}}</ion-col> -->
+                          <ion-col col-4></ion-col>                          
                           <ion-col col-8>
                             <ion-row>
                              <ion-col col-2 style="color:#faf1e7"><img src="assets/imgs/icWorkSmall@2x.png" style="width: 18px;"></ion-col>
-                             <ion-col col-10 style="color:#424242;text-transform: capitalize;">{{userDestAddress}}</ion-col>
-                             <!-- <ion-col col-10 style="color:#424242;text-transform: capitalize;" *ngIf="!innerResults">{{tripDetails.route_end_address}}</ion-col> -->
+                             <!-- <ion-col col-10 style="color:#424242;text-transform: capitalize;">{{userDestAddress}}</ion-col> -->
+                             
+                             <ion-col col-10 style="color:#424242;text-transform: capitalize;" *ngIf="!innerResults">{{tripDetails.route_end_address}}</ion-col>
                              
 
                             </ion-row>

@@ -51,7 +51,7 @@ export class TransportationTypePage {
   // Function executed when view loaded
   ionViewDidLoad() {
     this.platform.ready().then(()=>{
-        this.helper.geoLoc(data => this.getCurrentLoc(data));
+      //  this.helper.geoLoc(data => this.getCurrentLoc(data));
     })
     let type = 4;
     this.updateTrans(type);

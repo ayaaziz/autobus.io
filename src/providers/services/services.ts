@@ -516,7 +516,8 @@ export class ServicesProvider {
       headers = headers.set('Content-Type', 'application/x-www-form-urlencoded').set('Authorization', 'Bearer '+ localStorage.getItem("kdkvfkhggssoauto"))
     }
     let parameter = new HttpParams().set('lang',lang).set('page',page).set('trans_type',trans_type).set('from_location',from_location).set('to_location',to_location).set("to_address",to_address).set("from_address",from_address).set("type",trip_type);
-    let serviceUrl = this.helper.service_url + 'searchBusNearByITRoots';
+    // let serviceUrl = this.helper.service_url + 'searchBusNearByITRoots2';
+    let serviceUrl = this.helper.service_url + 'searchBusNearByITRoots2';    
     this.http.post(serviceUrl,parameter,  { headers: headers })
 
       .subscribe(

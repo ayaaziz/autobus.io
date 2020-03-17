@@ -249,11 +249,20 @@ export class TripDetailsPage {
       mapTypeId: google.maps.MapTypeId.ROADMAP
   };
   map = new google.maps.Map(document.getElementById("map_t"), myOptions);
+  
     var kmlLayer = new google.maps.KmlLayer(this.tripDetails.path_file, {
       suppressInfoWindows: true,
       preserveViewport: true,
       map: map
     });
+
+    var kmlLayer = new google.maps.KmlLayer(this.tripDetails.r2path_file, {
+      suppressInfoWindows: true,
+      preserveViewport: true,
+      map: map
+    });
+
+
     let url = "assets/imgs/bus587.png";
 
     marker = new google.maps.Marker({

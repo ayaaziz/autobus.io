@@ -37,7 +37,11 @@ export class HelperProvider {
   updateMapTimeOut = 10000;
   userNotifiedBueseOutOfWorkingPeriod = false;
   internetTimeout = 20000;//testing
-  public service_url = "http://mobilewebservices.ekartak.com/autobus/api/";
+  // public service_url = "http://mobilewebservices.ekartak.com/autobus/api/";
+  // public service_url = "http://192.168.1.32:88/autobus/api/";
+  public service_url = "http://itrootsdemos.com/autobusdev/api/";
+  
+  
   constructor(public http: HttpClient, public platform: Platform, public toastCtrl: ToastController,
     public alertCtrl: AlertController, public storage: Storage, public translate: TranslateService,
     public diagnostic: Diagnostic, public locationAccuracy: LocationAccuracy, private geolocation: Geolocation,
