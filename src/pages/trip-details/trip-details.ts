@@ -10,6 +10,9 @@ declare var $:any;
 declare var google;
  var map = undefined;
     var marker = undefined;
+    var marker2 = undefined;
+    var marker3 = undefined;
+
     var position = [43, -89];
     var numDeltas = 100;
 var delay = 10; //milliseconds
@@ -275,6 +278,41 @@ export class TripDetailsPage {
         scaledSize: new google.maps.Size(40, 40)
       }
     });
+
+
+    let startLatlng = (this.fromLoc).split(',');
+    let endLatlng = (this.toLoc).split(',');
+
+
+    //1-4
+    marker2 = new google.maps.Marker({
+      position: new google.maps.LatLng(startLatlng[0],startLatlng[1]),
+      map: map,
+      draggable: false,
+      animation: google.maps.Animation.DROP,
+      icon: {
+        url: "http://maps.google.com/mapfiles/ms/icons/yellow-dot.png",
+        scaledSize: new google.maps.Size(40, 40)
+      }
+    });
+    //1-4
+
+       //1-4
+      marker3 = new google.maps.Marker({
+        position: new google.maps.LatLng(endLatlng[0],endLatlng[1]),
+        map: map,
+        draggable: false,
+        animation: google.maps.Animation.DROP,
+        icon: {
+          url: "http://maps.google.com/mapfiles/ms/icons/purple-dot.png",
+          // url: url,
+
+          scaledSize: new google.maps.Size(40, 40)
+        }
+      });
+      //1-4
+
+
    setTimeout(() => {
      $('img[src="assets/imgs/bus587.png"]').css({
       'transform': 'rotate(' + (360 - parseInt(this.tripDetails.angle)) + 'deg)'

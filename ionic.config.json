@@ -9,6 +9,5 @@
       "path": "/payWithStripe",
       "proxyUrl": "https://us-central1-autobus-43798.cloudfunctions.net/"
     }
-  ],
-  "app_id": ""
+  ]
 }

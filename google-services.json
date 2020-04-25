@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "415720692611",
+    "firebase_url": "https://autobus-43798.firebaseio.com",
+    "project_id": "autobus-43798",
+    "storage_bucket": "autobus-43798.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:415720692611:android:e192b2dcf49db219",
+        "android_client_info": {
+          "package_name": "com.Nabdaa.autobus"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "415720692611-uvstkhbautdpegrrnvr2mvku2pp3o0u3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBBOWflE5L9UIPRdxC2K6v-XCtlZwlbtCc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
