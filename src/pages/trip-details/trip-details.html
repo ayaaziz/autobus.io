@@ -160,6 +160,7 @@
                           <ion-col col-8>
                             <ion-row>
                             <ion-col col-2 style="color:#faf1e7"><img src="assets/imgs/icBus@3x.png" style="width: 18px;"></ion-col>
+                            <ion-col col-10 style="color:#424242">{{"bus" | translate}} </ion-col>
                             <!-- <ion-col col-10 style="color:#424242">{{"EstimatedArrival" | translate}} </ion-col> -->
                             <ion-col col-10></ion-col>
       
@@ -276,9 +277,9 @@
                           <ion-col col-8>
                             <ion-row>
                              <ion-col col-2 style="color:#faf1e7"><img src="assets/imgs/icWorkSmall@2x.png" style="width: 18px;"></ion-col>
-                             <!-- <ion-col col-10 style="color:#424242;text-transform: capitalize;">{{userDestAddress}}</ion-col> -->
+                             <ion-col col-10 style="color:#424242;text-transform: capitalize;">{{userDestAddress}}</ion-col>
                              
-                             <ion-col col-10 style="color:#424242;text-transform: capitalize;" *ngIf="!innerResults">{{tripDetails.route_end_address}}</ion-col>
+                             <!-- <ion-col col-10 style="color:#424242;text-transform: capitalize;" *ngIf="!innerResults">{{tripDetails.route_end_address}}</ion-col> -->
                              
 
                             </ion-row>

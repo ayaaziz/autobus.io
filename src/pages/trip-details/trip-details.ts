@@ -121,7 +121,10 @@ export class TripDetailsPage {
     let currentDate = new Date();
     this.startTime = (currentDate.getHours() < 10 ? '0' + currentDate.getHours() : currentDate.getHours()) + ":" + (currentDate.getMinutes()  < 10 ? '0' +  currentDate.getMinutes() : currentDate.getMinutes());
     this.userSource = this.fromAddress;
+
+    //want it from map rather than api
     this.userFeetSource = this.tripDetails.closetPointData.feet.duration.text;
+    
     let stopTime = this.addMinutes(currentDate, this.tripDetails.closetPointData.feet.duration.value);
     this.userStopTime = (stopTime.getHours() < 10 ? '0' + stopTime.getHours() : stopTime.getHours()) + ":" + (stopTime.getMinutes() < 10 ? '0' + stopTime.getMinutes() : stopTime.getMinutes());
     let busEstArrival = this.addMinutes(currentDate, this.tripDetails.busRouteDistanceFeet.feet.duration.value);
@@ -226,9 +229,22 @@ export class TripDetailsPage {
 
   //open map native apps installed on mobile
   openOnMap() {
-    let latlng = (this.tripDetails.busRouteDistanceFeet.bus_location).split(',');
-    console.log("latlng " + latlng);
-    this.launchNavigator.navigate([latlng[0], latlng[1]]);
+
+    let latlngSrc = (this.fromLoc).split(',');
+    let options: LaunchNavigatorOptions = {
+    app: this.launchNavigator.APP.GOOGLE_MAPS,
+              start:[Number(latlngSrc[0]),Number(latlngSrc[1])]
+      };
+
+
+    // let latlngDest = (this.tripDetails.busRouteDistanceFeet.bus_location).split(',');
+    // let latlng = (this.toLoc).split(',');
+    let latlngDest = (this.tripDetails.closetPointData.closetPoint).split(',');
+
+
+    // console.log("latlng " + latlngDest);
+    this.launchNavigator.navigate([latlngDest[0], latlngDest[1]],options);
+    // this.launchNavigator.navigate([Number(latlng[0]) , Number(latlng[1])],options);
   }
   // Change map type to ROADMAP or satellite
   mapTypeChanged(type) {
