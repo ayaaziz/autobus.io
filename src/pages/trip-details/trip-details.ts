@@ -63,8 +63,6 @@ export class TripDetailsPage {
   user_marker
   bus_status
 
-
-  //aya//////
   userStopTime2;
   busEstDeptTime2;
   busAveStopTime2;
@@ -78,7 +76,7 @@ export class TripDetailsPage {
   hideMoreBtn = true;
   noData = false;
   innerResults:boolean = false;
-  //aya/////
+
 
 
   tripDetailsSegment: string = "Detials";
@@ -220,7 +218,7 @@ export class TripDetailsPage {
     
   }
 
-  //aya
+ 
   openInnerTripDetails(item) {
     // this.navCtrl.push("TripDetailsPage",{details:item, type: this.type , fromAddress: this.fromAddress , fromLoc : this.fromLoc, toLoc: this.toLoc, toAddress: this.toAddress,innerResults:true});    
     this.navCtrl.push("TripDetailsPage",{details:item, type: this.type , fromAddress: this.fromAddress , fromLoc : this.fromLoc, toLoc: this.toLoc, toAddress: this.toAddress});        
@@ -269,17 +267,21 @@ export class TripDetailsPage {
   };
   map = new google.maps.Map(document.getElementById("map_t"), myOptions);
   
+    //Draw path of first trip
     var kmlLayer = new google.maps.KmlLayer(this.tripDetails.path_file, {
       suppressInfoWindows: true,
       preserveViewport: true,
       map: map
     });
 
-    var kmlLayer = new google.maps.KmlLayer(this.tripDetails.r2path_file, {
-      suppressInfoWindows: true,
-      preserveViewport: true,
-      map: map
-    });
+    //Draw path of second trip
+    if(this.tripDetails.secondTrip) {
+      var kmlLayer = new google.maps.KmlLayer(this.tripDetails.r2path_file, {
+        suppressInfoWindows: true,
+        preserveViewport: true,
+        map: map
+      });
+    }
 
 
     let url = "assets/imgs/bus587.png";
@@ -302,7 +304,6 @@ export class TripDetailsPage {
 
   if(this.tripDetails.secondTrip) {
   
-    //1-4
     marker2 = new google.maps.Marker({
       position: new google.maps.LatLng(startLatlng[0],startLatlng[1]),
       map: map,
@@ -313,9 +314,7 @@ export class TripDetailsPage {
         scaledSize: new google.maps.Size(40, 40)
       }
     });
-    //1-4
-
-    //1-4
+  
     marker3 = new google.maps.Marker({
       position: new google.maps.LatLng(endLatlng[0],endLatlng[1]),
       map: map,
@@ -327,7 +326,7 @@ export class TripDetailsPage {
         scaledSize: new google.maps.Size(40, 40)
       }
     });
-    //1-4
+   
   }
 
 
