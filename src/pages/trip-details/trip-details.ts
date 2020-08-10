@@ -300,6 +300,8 @@ export class TripDetailsPage {
     let endLatlng = (this.toLoc).split(',');
 
 
+  if(this.tripDetails.secondTrip) {
+  
     //1-4
     marker2 = new google.maps.Marker({
       position: new google.maps.LatLng(startLatlng[0],startLatlng[1]),
@@ -313,20 +315,20 @@ export class TripDetailsPage {
     });
     //1-4
 
-       //1-4
-      marker3 = new google.maps.Marker({
-        position: new google.maps.LatLng(endLatlng[0],endLatlng[1]),
-        map: map,
-        draggable: false,
-        animation: google.maps.Animation.DROP,
-        icon: {
-          url: "http://maps.google.com/mapfiles/ms/icons/purple-dot.png",
-          // url: url,
-
-          scaledSize: new google.maps.Size(40, 40)
-        }
-      });
-      //1-4
+    //1-4
+    marker3 = new google.maps.Marker({
+      position: new google.maps.LatLng(endLatlng[0],endLatlng[1]),
+      map: map,
+      draggable: false,
+      animation: google.maps.Animation.DROP,
+      icon: {
+        url: "http://maps.google.com/mapfiles/ms/icons/purple-dot.png",
+        // url: url,
+        scaledSize: new google.maps.Size(40, 40)
+      }
+    });
+    //1-4
+  }
 
 
    setTimeout(() => {
