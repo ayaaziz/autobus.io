@@ -41,7 +41,11 @@ export class HelperProvider {
   // public service_url = "http://192.168.1.32:88/autobus/api/";
 
   // public service_url = "http://itrootsdemos.com/autobusdev/api/";
-  public service_url = "https://itrootsdemos.com/autobusdev/api/";
+
+  //used
+  // public service_url = "https://itrootsdemos.com/autobusdev/api/";
+
+  public service_url = "http://mobilewebservices.ekartak.com/autobus/api/";
   
   
   constructor(public http: HttpClient, public platform: Platform, public toastCtrl: ToastController,

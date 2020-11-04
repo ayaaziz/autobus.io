@@ -254,14 +254,9 @@ bus_status
             if(data.data.data.length > 0){
               data.data.data.forEach(element => {
 
-                // //aya
-                // if(!element.secondTrip) {
-                //   this.buses.push(element);
-                // } else {
-                //   this.secondTripBuses.push(element);
-                // }
-
+              
                   //aya
+                  // array of trips with type of each trip (direct/indirect)
                   if(!element.secondTrip) {
                     this.buses.push( {
                       el: element,

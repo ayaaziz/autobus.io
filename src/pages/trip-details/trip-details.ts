@@ -304,6 +304,7 @@ export class TripDetailsPage {
 
   if(this.tripDetails.secondTrip) {
   
+    //yello marker for start / from address
     marker2 = new google.maps.Marker({
       position: new google.maps.LatLng(startLatlng[0],startLatlng[1]),
       map: map,
@@ -315,6 +316,7 @@ export class TripDetailsPage {
       }
     });
   
+    //purple marker for end / to address    
     marker3 = new google.maps.Marker({
       position: new google.maps.LatLng(endLatlng[0],endLatlng[1]),
       map: map,
@@ -322,7 +324,6 @@ export class TripDetailsPage {
       animation: google.maps.Animation.DROP,
       icon: {
         url: "http://maps.google.com/mapfiles/ms/icons/purple-dot.png",
-        // url: url,
         scaledSize: new google.maps.Size(40, 40)
       }
     });
